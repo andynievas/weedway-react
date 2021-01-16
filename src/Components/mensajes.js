@@ -19,18 +19,31 @@ class Mensaje extends React.Component{
 class Mensajes extends React.Component{
 
     styles = {
-        margin: 'auto'
+        margin: 'auto',
+        padding: '0 20px',
+        // textAlign: 'justify',
+        position: 'absolute',
+        top: '50px',
+        bottom: '0',
+        left: '0',
+        right: '0',
+        overflowY: 'scroll'
     }
     
     render(){
         // if(this.view === '')
         return (
             <div style={this.styles} >
-                <button onClick={ ()=>{this.props.setEstado()} } > &times;</button>
+                {/* <button onClick={ ()=>{this.props.setEstado()} } > &times;</button> */}
                 <h2>{this.props.view}</h2>
                 <p>Y aca sigue la seccion de la view correspondiente</p>
-                <input type='text' placeholder='Buscar' />
+                <input type='text' style={{width: '200px', maxWidth: 'calc(100% - 8px)', margin: 'auto'}} placeholder='Buscar' />
                 <button>Nuevo mensaje</button>
+                <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
+                <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
+                <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo para ver como es que se ve' />
+                <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
+                <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
                 <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
                 <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
                 <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
