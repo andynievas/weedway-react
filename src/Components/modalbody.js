@@ -24,7 +24,7 @@ class ModalBody extends React.Component{
         margin: '0px',
         width: '50px',
         height: '50px',
-        background: 'red',
+        backgroundColor: 'red',
         fontSize: '28px'
     }
     
