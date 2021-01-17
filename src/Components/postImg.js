@@ -135,7 +135,7 @@ class Dropdown extends React.Component{
   }
 
 function PostImg(props){
-  console.log(props)
+  // console.log(props)
   const userName = props.posteo.userName;
   const profilePhoto = props.posteo.profilePhoto;
   const userPost = props.posteo.userPost;

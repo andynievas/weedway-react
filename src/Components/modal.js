@@ -20,8 +20,10 @@ class Modal extends React.Component{
         const exit = " animate__backOutDown";
 
         if(this.props.estado){
+            document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
             return (entrance);
         }else{
+            document.getElementsByTagName('body')[0].style = 'overflow: auto;';
             return (exit);
         }
     }

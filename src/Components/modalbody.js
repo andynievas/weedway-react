@@ -22,19 +22,31 @@ class ModalBody extends React.Component{
         backgroundColor: 'red',
         fontSize: '28px'
     }
+
+    view(){
+        if (this.props.view === 'Mensajes'){
+            return (
+                <Mensajes />
+            );
+        }else if (this.props.view === 'Cuenta'){
+            return (
+                <Cuenta />
+            );
+        }
+    }
     
     render(){
-        if (this.props.view === 'Mensajes'){
+        // if (this.props.view === 'Mensajes'){
             return (
                 <div style={this.styles} >
                     <div style={{display: 'flex'}} >
                         <button style={this.buttonStyle} onClick={ ()=>{this.props.setEstado()} } > &times;</button>
-                        <p style={{width: '100%', textAlign: 'center', height: '18px'}} >{this.props.view}</p>
+                        <p style={{width: '100%', textAlign: 'center', fontSize: '26px', lineHeight: '50px', height: '50px', padding: '0 45px 0 0', margin: '0px', color: 'lightgreen'}} >{this.props.view}</p>
                     </div>
-                    <Mensajes />
+                    {this.view()}
                 </div>
             );
-        } else if (this.props.view === 'Cuenta'){
+        /*} else if (this.props.view === 'Cuenta'){
             return (
                 <div style={this.styles} >
                     <button style={this.buttonStyle} onClick={ ()=>{this.props.setEstado()} } > &times;</button>
@@ -56,7 +68,7 @@ class ModalBody extends React.Component{
                     <p>Y aca sigue la seccion de la view correspondiente</p>
                 </div>
             );
-        }
+        }*/
         
     }
 }
