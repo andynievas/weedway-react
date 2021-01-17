@@ -4,19 +4,27 @@ import React from 'react';
 
 class Cuenta extends React.Component{
 
-    styles = {
-        maxWidth: '400px',
+    input = {
+        display: 'block',
+        width: '80%',
         margin: 'auto'
+    }
+
+    edit = {
+        display: 'block',
+        width: '80%',
+        margin: 'auto',
+        backgroundColor: 'lightgreen'
     }
     
     render(){
-        // if(this.view === '')
         return (
             <div style={{maxWidth: '300px', margin: 'auto'}} >
-                <h2 style={{textAlign: 'center'}} >Perfil personal</h2>
+                <h2 style={{textAlign: 'center', margin: '0', fontSize: '40px', fontWeight: 'bold'}} >{localStorage.getItem('weedway-user')}</h2>
                 <p>Aqui puedes ver tus datos personales y posteos</p>
-                <input type='text' placeholder='Buscar' />
-                <button>Nuevo Post</button>
+                <button style={this.edit} >Editar datos personales</button>
+                <input type='text' style={this.input} placeholder='Nombre de usuario' />
+                <input type='text' style={this.input} placeholder='Apodo' />
             </div>
         );
     }

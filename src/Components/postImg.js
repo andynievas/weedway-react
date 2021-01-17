@@ -24,7 +24,7 @@ class Comentario extends React.Component{ // Quiero hacer autofocus al clickear 
     ident = 0;
 
     comentario = {
-      'user': localStorage.getItem('user'),
+      'user': localStorage.getItem('weedway-user'),
       'comentario': '',
       'id': this.ident
     }

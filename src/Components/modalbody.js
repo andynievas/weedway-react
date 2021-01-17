@@ -2,6 +2,9 @@
 import React from 'react';
 import Mensajes from './mensajes';
 import Cuenta from './cuenta';
+import Foto from './foto';
+import Notifications from './notification';
+import Lugares from './lugares';
 
 
 class ModalBody extends React.Component{
@@ -32,44 +35,31 @@ class ModalBody extends React.Component{
             return (
                 <Cuenta />
             );
+        }else if (this.props.view === 'Foto'){
+            return (
+                <Foto />
+            );
+        }else if (this.props.view === 'Notifications'){
+            return (
+                <Notifications />
+            );
+        }else if (this.props.view === 'Lugares'){
+            return (
+                <Lugares />
+            );
         }
     }
     
     render(){
-        // if (this.props.view === 'Mensajes'){
-            return (
-                <div style={this.styles} >
-                    <div style={{display: 'flex'}} >
-                        <button style={this.buttonStyle} onClick={ ()=>{this.props.setEstado()} } > &times;</button>
-                        <p style={{width: '100%', textAlign: 'center', fontSize: '26px', lineHeight: '50px', height: '50px', padding: '0 45px 0 0', margin: '0px', color: 'lightgreen'}} >{this.props.view}</p>
-                    </div>
-                    {this.view()}
-                </div>
-            );
-        /*} else if (this.props.view === 'Cuenta'){
-            return (
-                <div style={this.styles} >
+        return (
+            <div style={this.styles} >
+                <div style={{display: 'flex'}} >
                     <button style={this.buttonStyle} onClick={ ()=>{this.props.setEstado()} } > &times;</button>
-                    <Cuenta setEstado={this.props.setEstado} />
+                    <p style={{width: '100%', textAlign: 'center', fontSize: '26px', lineHeight: '50px', height: '50px', padding: '0 45px 0 0', margin: '0px'/* , color: 'lightgreen' */}} >{this.props.view}</p>
                 </div>
-            );
-        } else if (this.props.view === 'Notifications'){
-            return (
-                <div style={this.styles} >
-                    <button style={this.buttonStyle} onClick={ ()=>{this.props.setEstado()} } > &times;</button>
-                    <Mensajes setEstado={this.props.setEstado} />
-                </div>
-            );
-        } else {
-            return (
-                <div style={this.styles} >
-                    <button style={this.buttonStyle} onClick={ ()=>{this.props.setEstado()} } > &times;</button>
-                    <h2>{this.props.view}</h2>
-                    <p>Y aca sigue la seccion de la view correspondiente</p>
-                </div>
-            );
-        }*/
-        
+                {this.view()}
+            </div>
+        );
     }
 }
 
