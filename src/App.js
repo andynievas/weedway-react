@@ -1,25 +1,11 @@
 
 import React from 'react';
-// import './App.css';
 
 import HeaderTitle from './Components/headerTitle.js';
-// import Header from './Components/header.js';
 import Modal from './Components/modal.js';
 import Posteo from './Components/postImg.js';
 import Footer from './Components/footer.js';
 
-// let array = [
-//   {"nombre": "Andy", "Apellido": "Nievas", "id": 0},
-//   {"nombre": "Kevin", "Apellido": "Molina", "id": 1}
-// ];
-
-// function Aver(){
-//   return (
-//     <div>
-//       {array.map(element => <h2 key={element.id} >{'Nombre: ' + element.nombre + ', Apellido: ' + element.Apellido}</h2>)}
-//     </div>
-//   );
-// }
 
 class App extends React.Component {
 
@@ -35,12 +21,32 @@ class App extends React.Component {
 
   usuarios = [
     {
-      userName: 'AndyNievas',
+      userName: 'andynievas92',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
       userPost: 'https://thispersondoesnotexist.com/image'
     },
     {
-      userName: 'Juliansito',
+      userName: 'reyJulian',
+      profilePhoto: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://thispersondoesnotexist.com/image'
+    },
+    {
+      userName: 'mamfristo',
+      profilePhoto: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://thispersondoesnotexist.com/image'
+    },
+    {
+      userName: 'salchipapa',
+      profilePhoto: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://thispersondoesnotexist.com/image'
+    },
+    {
+      userName: 'ndeaaaAa',
+      profilePhoto: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://thispersondoesnotexist.com/image'
+    },
+    {
+      userName: 'otros',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
       userPost: 'https://thispersondoesnotexist.com/image'
     }
