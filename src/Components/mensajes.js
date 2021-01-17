@@ -19,15 +19,9 @@ class Mensaje extends React.Component{
 class Mensajes extends React.Component{
 
     styles = {
-        margin: 'auto',
-        padding: '0 20px',
-        // textAlign: 'justify',
-        position: 'absolute',
-        top: '50px',
-        bottom: '0',
-        left: '0',
-        right: '0',
-        overflowY: 'scroll'
+        // padding: '40px 20px 0 20px',
+        height: 'calc(100vh - 120px)',
+        overflowY: 'auto' // Esta es la clave para la scrollbar
     }
     
     render(){

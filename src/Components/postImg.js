@@ -158,7 +158,9 @@ class Posteo extends React.Component{
     return (
       <div className="animate__animated animate__zoomInDown" >
         <br/>
-        <PostImg posteo={this.props.posteo} />
+        <PostImg
+          posteo={this.props.posteo}
+        />
         <br/>
       </div>
     );

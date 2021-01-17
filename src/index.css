@@ -73,7 +73,7 @@ body{
     margin-top: 0;
     margin-bottom: 0;
     font-family: monospace;
-    font-size: 40px;
+    font-size: 34px;
     text-align: center;
     cursor: pointer;
   }
@@ -102,6 +102,23 @@ body{
     display: flex;
   }
   
+  .nav-button{
+    width: 10%;
+  }
+  .nav-button button{
+    width: 100%;
+    min-width: 100px;
+    height: 100%;
+    color: rgb(40,230,40);
+    background-color: rgb(50,50,50);
+    /* font-size: 24px; */
+    transition: all .2s;
+  }
+  .nav-button button:hover{
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 5px purple solid;
+  }
   .navItem{
     color: rgb(40,230,40);
     background-color: rgb(10,10,10);
@@ -112,7 +129,7 @@ body{
     text-decoration: none;
     line-height: 18px;
     font-size: 14px;
-    transition: all .5s;
+    transition: all .2s;
   }
   .navItem:hover{
     text-decoration: none;

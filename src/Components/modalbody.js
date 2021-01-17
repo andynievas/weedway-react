@@ -12,15 +12,10 @@ class ModalBody extends React.Component{
         color: 'rgb(220,220,220)',
         background: 'rgb(60,60,60)',
         borderRadius: '20px 20px 0 0',
-        position: 'fixed',
-        top: '68px',
-        bottom: '0',
-        left: '0',
-        right: '0'
+        marginTop: '70px'
     }
 
     buttonStyle = {
-        position: 'absolute',
         margin: '0px',
         width: '50px',
         height: '50px',
@@ -32,8 +27,11 @@ class ModalBody extends React.Component{
         if (this.props.view === 'Mensajes'){
             return (
                 <div style={this.styles} >
-                    <button style={this.buttonStyle} onClick={ ()=>{this.props.setEstado()} } > &times;</button>
-                    <Mensajes setEstado={this.props.setEstado} />
+                    <div style={{display: 'flex'}} >
+                        <button style={this.buttonStyle} onClick={ ()=>{this.props.setEstado()} } > &times;</button>
+                        <p style={{width: '100%', textAlign: 'center', height: '18px'}} >{this.props.view}</p>
+                    </div>
+                    <Mensajes />
                 </div>
             );
         } else if (this.props.view === 'Cuenta'){

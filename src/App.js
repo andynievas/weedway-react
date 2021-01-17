@@ -3,7 +3,7 @@ import React from 'react';
 // import './App.css';
 
 import HeaderTitle from './Components/headerTitle.js';
-import Header from './Components/header.js';
+// import Header from './Components/header.js';
 import Modal from './Components/modal.js';
 import Posteo from './Components/postImg.js';
 import Footer from './Components/footer.js';
@@ -28,54 +28,33 @@ class App extends React.Component {
   }
   textoModal = '';
 
-  users = [
-    {
-      id: '0',
-      name: 'AndyNievas',
-      profilePhoto: 'url',
-      posts: '3'
-    }
-  ]
-// https://jsonplaceholder.typicode.com/posts
-
-// https://github.com/andynievas/WeedWay-Api/posts.json
-
-
-  // posts = async () => {
-  //   const posts = await fetch('http://localhost:3001/posts', {mode: 'cors'});
-  //   const data = await posts.json();
-  //   setTimeout( ()=>{
-  //     console.log( data );
-  //   } , 1000)
-  // }
-
-  posts = () => {
-
-    fetch(`http://localhost:3001/posts`, {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-
-    })
-    // .then((response) => response.json())
-    .then((messages) => {console.log(messages); console.log('Andy'); });
-
-  }
-
   changEstado = (texto) => {
     this.setState({modal: !this.state.modal});
     this.textoModal = texto;
   }
 
+  usuarios = [
+    {
+      userName: 'AndyNievas',
+      profilePhoto: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://thispersondoesnotexist.com/image'
+    },
+    {
+      userName: 'Juliansito',
+      profilePhoto: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://thispersondoesnotexist.com/image'
+    }
+  ]
+
   render(){
     return (
       <div className="App">
   
-        <HeaderTitle />
-        <Header setEstado={this.changEstado} onClick={()=>{this.posts()}} />
+        <HeaderTitle setEstado={this.changEstado} />
         <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
         
+        {this.usuarios.map( user=><Posteo posteo={user} /> ) }
+
         {/* {this.posts.map( post => <Posteo key={post.id} posteo={post} /> )} */}
 
         {/* userName={post.userName} profilePhoto={post.profilePhoto} userPost={post.userPost} */}
