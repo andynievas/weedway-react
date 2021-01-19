@@ -1,4 +1,7 @@
+
 import React from 'react';
+import Options from './post-options';
+
 
 class InteractionFav extends React.Component{
 
@@ -53,7 +56,7 @@ class Comentario extends React.Component{ // Quiero hacer autofocus al clickear 
         return (
           <form className="comentar " onSubmit={this.onsubmit} autoComplete="off" >
             <input type="text" className="comentario-text-input" name="comentario" onChange={this.onchange} placeholder="Escribe aquí tu comentario..." />
-            <input type="submit" className="send" />
+            <input type="submit" className="send" style={{padding: '0'}} value='send' />
           </form>
         );
     }
@@ -111,18 +114,19 @@ class Dropdown extends React.Component{
     state={
       show: false
     }
+
+    changEstado = () => {
+      this.setState({show: !this.state.show});
+    }
   
     render(){
       if(this.state.show){
         return (
-          <div>
-            <div className="dropdown smoothDown" >
-              <button>Dejar de seguir a User</button>
-              <button>Compartir publicación de User</button>
-              <button>Reportar a User</button>
-            </div>
-            <i className="fas fa-ellipsis-h options" onClick={ ()=>{this.setState({show: !this.state.show}); console.log(this);} } ></i>
-          </div>
+          <Options
+            estado={this.state.show}
+            setEstado={this.changEstado}
+            user={this.props.user}
+          />
         );
       }else{
         return (
@@ -144,7 +148,7 @@ function PostImg(props){
         <div className="userName" >
           <img className="fondo-negro user-photo" src={profilePhoto} alt="user-logo" />
           <h3 className="user-title" >{userName}</h3>
-          <Dropdown/>
+          <Dropdown user={userName} />
         </div>
         <img className=" img-post fondo-negro" src={userPost} alt="img-posted" />
         <Interaction/>

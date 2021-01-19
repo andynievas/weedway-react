@@ -15,11 +15,18 @@ class Modal extends React.Component{
         zIndex: '1'
     }
 
+    first = 0;
     animation = () => {
-        const entrance = " animate__backInUp";
-        const exit = " animate__backOutDown";
+        const entrance = "animate__animated animate__backInUp";
+        const exit = "animate__animated animate__backOutDown";
 
-        if(this.props.estado){
+        if(this.first === 0){
+            console.log(this.first);
+            this.first = 1;
+            return 'none';
+        }
+        else if(this.props.estado){
+
             document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
             return (entrance);
         }else{
@@ -31,7 +38,7 @@ class Modal extends React.Component{
     render(){
 
         return (
-            <div className={"animate__animated" + this.animation() }  style={this.modalStyle}>
+            <div className={ this.animation() }  style={this.modalStyle}>
                 <ModalBody view={this.props.view} setEstado={this.props.setEstado} />
             </div>
         );

@@ -1,7 +1,6 @@
 
 import React from 'react';
 import Mensajes from './mensajes';
-import Cuenta from './cuenta';
 import Foto from './foto';
 import Notifications from './notification';
 import Lugares from './lugares';
@@ -15,7 +14,13 @@ class ModalBody extends React.Component{
         color: 'rgb(220,220,220)',
         background: 'rgb(60,60,60)',
         borderRadius: '20px 20px 0 0',
-        marginTop: '70px'
+        // marginTop: '70px',
+        position: 'fixed',
+        bottom: '0',
+        left: '0',
+        right: '0',
+        top: '64px',
+        // height: 'calc(100% - 70px)'
     }
 
     buttonStyle = {
@@ -27,17 +32,13 @@ class ModalBody extends React.Component{
     }
 
     view(){
-        if (this.props.view === 'Mensajes'){
-            return (
-                <Mensajes />
-            );
-        }else if (this.props.view === 'Cuenta'){
-            return (
-                <Cuenta />
-            );
-        }else if (this.props.view === 'Foto'){
+        if (this.props.view === 'Foto'){
             return (
                 <Foto />
+            );
+        }else if (this.props.view === 'Mensajes'){
+            return (
+                <Mensajes />
             );
         }else if (this.props.view === 'Notifications'){
             return (

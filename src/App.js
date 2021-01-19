@@ -7,7 +7,7 @@ import Posteo from './Components/postImg.js';
 import Footer from './Components/footer.js';
 
 
-class Login extends React.Component{
+class Login extends React.Component{ // Se va a un Componente
 
   state = {
     name: ''
@@ -82,7 +82,7 @@ class Login extends React.Component{
 
             <form onSubmit={this.onsubmit} autoComplete="on" >
               <label for='username' style={this.label} >Nombre de usuario</label>
-              <span  >Nombre de usuario</span>
+              {/* <span  >Nombre de usuario</span> */}
               <input type='text' style={this.inputs} onChange={this.onchange} id='username' placeholder='Username' />
               <label for='password-user' style={this.label} >Contraseña</label>
               <input type='password' style={this.inputs} id='password-user' placeholder='Password' />
@@ -100,6 +100,16 @@ class Login extends React.Component{
 }
 
 class App extends React.Component {
+
+  menuLateral = {
+    show: true
+  }
+  showMenu = () => {
+    this.menuLateral = {
+      show: !this.menuLateral.show
+    }
+    // console.log(this.menuLateral)
+  }
 
   state = {
     modal: false
@@ -156,7 +166,7 @@ class App extends React.Component {
       return (
         <div className="App">
     
-          <HeaderTitle setEstado={this.changEstado} />
+          <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} />
           <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
           
           {this.usuarios.map( user=><Posteo key={user.id} posteo={user} /> ) }
