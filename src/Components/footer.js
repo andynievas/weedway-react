@@ -4,7 +4,7 @@ import NavItem from './navItem.js';
 class Footer extends React.Component{
   render(){
     return(
-      <div className="footer" >
+      <div className="footer animate__animated animate__fadeInUp" >
         <NavItem mostrar={this.props.setEstado} texto="Foto" icon="far fa-camera" />
 
         <NavItem mostrar={this.props.setEstado} texto="Mensajes" icon="far fa-envelope" />

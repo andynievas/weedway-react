@@ -160,7 +160,7 @@ class Posteo extends React.Component{
 
   render (){
     return (
-      <div className="animate__animated animate__zoomInDown" >
+      <div className="animate__animated animate__fadeInUp" >
         <br/>
         <PostImg
           posteo={this.props.posteo}

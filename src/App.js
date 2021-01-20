@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import HeaderTitle from './Components/headerTitle.js';
 import Modal from './Components/modal.js';
@@ -58,12 +57,7 @@ class Login extends React.Component{ // Se va a un Componente
   }
 
   onchange = e => {
-    // this.comentario = {
-    //   [e.target.name]: e.target.value
-    // }
-
     this.setState( { name: e.target.value } );
-
   }
 
   onsubmit = e => {
@@ -177,29 +171,17 @@ class App extends React.Component {
     if( localStorage.getItem('weedway-user') ){
       return (
         <div className="App">
-
-          <Router>
-            <Route exact path="/" render={()=>{
-              return (<div>
-
-                <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} />
-                <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
-                
-                {this.usuarios.map( user=><Posteo key={user.id} posteo={user} /> ) }
-        
-                {/* {this.posts.map( post => <Posteo key={post.id} posteo={post} /> )} */}
-        
-                {/* userName={post.userName} profilePhoto={post.profilePhoto} userPost={post.userPost} */}
-                
-                <Footer setEstado={this.changEstado} />
-
-              </div>)
-            }} />
-
-            <Route path="/search" render={()=>{return <Search />}} />
-
-          </Router>
-
+          <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} />
+          <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
+          
+          {this.usuarios.map( user=><Posteo key={user.id} posteo={user} /> ) }
+  
+          {/* {this.posts.map( post => <Posteo key={post.id} posteo={post} /> )} */}
+  
+          {/* userName={post.userName} profilePhoto={post.profilePhoto} userPost={post.userPost} */}
+          
+          <Footer setEstado={this.changEstado} />
+          <Search />
         </div>
       );
     } else {
