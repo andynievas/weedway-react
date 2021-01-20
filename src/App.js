@@ -1,11 +1,23 @@
 
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import HeaderTitle from './Components/headerTitle.js';
 import Modal from './Components/modal.js';
 import Posteo from './Components/postImg.js';
 import Footer from './Components/footer.js';
 
+
+class Search extends React.Component{ // Se va a un Componente
+
+  render(){
+    return <div>
+      <h4>Busca a tus amigos y añadelos</h4>
+      <input type="text" placeholder="Buscar..." />
+      <input type="submit" value="Buscar" />
+    </div>
+  }
+}
 
 class Login extends React.Component{ // Se va a un Componente
 
@@ -165,24 +177,35 @@ class App extends React.Component {
     if( localStorage.getItem('weedway-user') ){
       return (
         <div className="App">
-    
-          <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} />
-          <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
-          
-          {this.usuarios.map( user=><Posteo key={user.id} posteo={user} /> ) }
-  
-          {/* {this.posts.map( post => <Posteo key={post.id} posteo={post} /> )} */}
-  
-          {/* userName={post.userName} profilePhoto={post.profilePhoto} userPost={post.userPost} */}
-          
-          <Footer setEstado={this.changEstado} />
+
+          <Router>
+            <Route exact path="/" render={()=>{
+              return (<div>
+
+                <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} />
+                <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
+                
+                {this.usuarios.map( user=><Posteo key={user.id} posteo={user} /> ) }
+        
+                {/* {this.posts.map( post => <Posteo key={post.id} posteo={post} /> )} */}
+        
+                {/* userName={post.userName} profilePhoto={post.profilePhoto} userPost={post.userPost} */}
+                
+                <Footer setEstado={this.changEstado} />
+
+              </div>)
+            }} />
+
+            <Route path="/search" render={()=>{return <Search />}} />
+
+          </Router>
+
         </div>
       );
     } else {
       return <Login />;
     }
 
-    
   }
   
 }
