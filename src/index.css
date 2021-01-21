@@ -64,10 +64,10 @@ body{
     border-radius: 50%;
   }
   
-  #weedway{
+  .weedway{
     background-color: rgb(30,30,30);
   }
-  #weedway h2{
+  .weedway h2{
     color: rgb(40,230,40);
     position: relative;
     max-width: 400px;
@@ -81,11 +81,11 @@ body{
     text-align: center;
     cursor: pointer;
   }
-  #weedway h2 a{
+  .weedway h2 a{
     color: rgb(40,230,40);
     text-decoration: none;
   }
-  #weedway h2 a img{
+  img .header-icon{
     width: 42px;
     position: relative;
     top: 7px;
@@ -322,4 +322,70 @@ body{
   padding: 5px 0;
   border: none;
   border-radius: 6px;
+}
+/* #loginForm{
+  position: relative;
+} */
+#loginForm input{
+  background-color: rgb(250,200,200);
+  border: none;
+  /* border-radius: 10px; */
+  padding: 0px 20px;
+  height: 40px;
+  transition: all 0.3s;
+}
+#loginForm input:focus{
+  color: white;
+  background-color: rgb(100,10,10);
+  font-size: 16px;
+  border: none;
+  border-radius: 2rem;
+  padding-top: 10px;
+  box-shadow: 0px 0px 10px 0px red;
+}
+.username-label{
+  color: rgb(230,50,70);
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  transition: all 0.2s;
+}
+.password-label{
+  color: rgb(230,50,70);
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  transition: all 0.2s;
+}
+
+#username input:focus ~ .username-label{
+  position: absolute;
+  top: 2px;
+  font-size: 14px;
+  color: white;
+}
+
+#password-user input:focus ~ .password-label{
+  position: absolute;
+  top: 2px;
+  font-size: 14px;
+  color: white;
+}
+
+input#login-btn{
+  color: white;
+  /* background-color: rgb(255, 99, 71); */
+  /* background-color: rgba(250, 110, 10, 1); */
+  background-color: rgba(0,0,0,0);
+  font-size: 16px;
+  border: 3px solid rgb(240, 70, 50);
+  display: block;
+  width: 60%;
+  min-width: 150px;
+  margin: 30px auto;
+  cursor: pointer;
+  border-radius: 20px;
+}
+input#login-btn:focus{
+  padding-bottom: 10px;
 }

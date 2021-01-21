@@ -47,12 +47,20 @@ class EditarDatos extends React.Component{
             );
         }else {
             return (
-                <form className="animate__animated animate__fadeInUp" style={{margin: '20px 0'}} onSubmit={this.onsubmit} id="changeUserName" autoComplete="off" >
-                    <button style={this.edit} onClick={ ()=>{this.props.setEstado(); } } >Editar datos personales</button>
-                    <input type="text" onChange={this.onchange} placeholder="Username" />
-                    <input type="submit" value="Guardar" style={{ backgroundColor: 'rgb(20,180,20)', color: 'white', cursor: 'pointer' }} />
-                    <button style={this.logOut} id='logOut' onClick={ ()=>{localStorage.removeItem('weedway-user'); window.location.reload()} } >Cerrar sesión</button>
-                </form>
+                <div >
+                    <form className="animate__animated animate__fadeInUp" style={{margin: '20px 0'}} onSubmit={this.onsubmit} id="changeUserName" autoComplete="off" >
+                        <button style={this.edit} onClick={ ()=>{this.props.setEstado(); } } >Cancelar</button>
+                        <input type="text" onChange={this.onchange} placeholder="Username" />
+                        <input type="submit" value="Guardar" style={{ backgroundColor: 'rgb(20,180,20)', color: 'white', cursor: 'pointer' }} />
+                        <button style={this.logOut} id='logOut' onClick={ (e)=>{ e.preventDefault(); document.getElementById('confirm').classList.add('animate__fadeInUp'); document.getElementById('confirm').classList.remove('none'); } } >Cerrar sesión</button>
+                    </form>
+
+                    <div className="animate__animated none" id="confirm" >
+                        <h4>Quieres salir?</h4>
+                        <button style={{padding:'10px', margin:'10px', width: '40%'}}  onClick={ ()=>{localStorage.removeItem('weedway-user'); window.location.reload()} } >Si</button>
+                        <button style={{padding:'10px', margin:'10px', width: '40%'}} >No</button>
+                    </div>
+                </div>
             );
         }
     }
@@ -111,16 +119,6 @@ class Cuenta extends React.Component{
                 </div>
             );
         }
-        // return (
-        //     <div style={{maxWidth: '300px', margin: 'auto'}} >
-        //         <h5 style={{textAlign: 'center', margin: '0', fontSize: '40px', fontWeight: 'bold', overflow: 'hidden'}} >{localStorage.getItem('weedway-user')}</h5>
-        //         <p>Aqui puedes ver tus datos personales y posteos</p>
-
-        //         <EditarDatos mostrar={this.state.show} setEstado={this.changEstado} />
-
-        //         <button style={this.logOut} id='logOut' onClick={ ()=>{localStorage.removeItem('weedway-user'); window.location.reload()} } >Cerrar sesión</button>
-        //     </div>
-        // );
     }
 }
 

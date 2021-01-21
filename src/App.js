@@ -6,6 +6,8 @@ import Modal from './Components/modal.js';
 import Posteo from './Components/postImg.js';
 import Footer from './Components/footer.js';
 
+// Static Files
+import imgTitle from './Components/weedway-icon.png';
 
 class Login extends React.Component{ // Se va a un Componente
 
@@ -30,19 +32,27 @@ class Login extends React.Component{ // Se va a un Componente
     margin: 'auto'
   }
 
-  label = {
-    display: 'block',
-    width: '80%',
-    margin: 'auto'
-  }
-
   inputs = {
     display: 'block',
     width: '80%',
     margin: 'auto',
-    height: '40px',
-    border: 'none',
-    padding: '0 20px'
+  }
+
+  icon = {
+    width: '42px',
+    position: 'relative',
+    top: '7px',
+    left: '8px'
+  }
+
+  usernameStyle = ()=>{
+
+    if( this.state.name === "" ){
+      return ("username-label");
+    }
+    else{
+      return("none");
+    }
   }
 
   onchange = e => {
@@ -64,8 +74,8 @@ class Login extends React.Component{ // Se va a un Componente
       <div>
 
         <div style={{ display: 'flex', width: '100%'}/* El -8px es por los bordes */} >
-          <div style={{width: '100%'}} id="weedway">
-            <h2 > <img src="weedway-icon.png" alt="«icon»" /> WeedWay </h2>
+          <div className="weedway" style={{width: '100%'}} id="weedway">
+            <h2 > <img style={ this.icon } src={ imgTitle } alt="«icon»" /> WeedWay </h2>
           </div>
         </div>
 
@@ -75,13 +85,22 @@ class Login extends React.Component{ // Se va a un Componente
 
           <div style={this.subContainer} >
 
-            <form onSubmit={this.onsubmit} autoComplete="on" >
-              <label for='username' style={this.label} >Nombre de usuario</label>
-              {/* <span  >Nombre de usuario</span> */}
-              <input type='text' style={this.inputs} onChange={this.onchange} id='username' placeholder='Username' />
-              <label for='password-user' style={this.label} >Contraseña</label>
-              <input type='password' style={this.inputs} id='password-user' placeholder='Password' />
-              <input type='submit' value='Log in' onClick={ ()=>{} } style={{ display: 'block', width: '50%', minWidth: '150px', margin: '30px auto'}} />
+            <form onSubmit={this.onsubmit} autoComplete="on" id="loginForm" >
+              {/* <label className="label" for='username' style={this.label} >Nombre de usuario</label> */}
+              
+              <div style={{ position: 'relative', margin: '10px' }} id='username' >
+                <input type='text' style={this.inputs} onChange={this.onchange} autoComplete="on" /* id='username' */ />
+                <span className={ this.usernameStyle() } >Usuario</span>
+              </div>
+
+              {/* <label className="label" for='password-user' style={this.label} >Contraseña</label> */}
+
+              <div style={{ position: 'relative', margin: '10px' }} id='password-user' >
+                <input type='password' style={this.inputs} /*id='password-user'*/ />
+                <span className="password-label" >Contraseña</span>
+              </div>
+
+              <input type='submit' value='Log in' onClick={ ()=>{} } id="login-btn" />
             </form>
 
           </div>

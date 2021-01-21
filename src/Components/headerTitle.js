@@ -1,7 +1,10 @@
 
 import React from 'react';
 
+// Components
 import MenuLateral from './menulateral';
+// Static Files
+import imgTitle from './weedway-icon.png';
 
 
 // weedway-icon.png
@@ -18,6 +21,13 @@ class HeaderTitle extends React.Component{
 
   first = 0;
 
+  estilos = {
+    width: '42px',
+    position: 'relative',
+    top: '7px',
+    left: '8px'
+  }
+
   render(){
 
     // var newURL = window.location.protocol + "//" + window.location.host + "/";
@@ -27,8 +37,8 @@ class HeaderTitle extends React.Component{
       // className=""
       style={{border: '1px lightgreen solid', display: 'flex', width: 'calc(100% - 4px)'}/* El -8px es por los bordes */} >
         
-        <div className="animate__animated animate__fadeInDown" style={{width: '80%', minWidth: '100px'}} id="weedway">
-          <h2 > <img src="weedway-icon.png" alt="«icon»" /> WeedWay </h2>
+        <div className="animate__animated animate__fadeInDown weedway" style={{width: '80%', minWidth: '100px'}} id="weedway-title">
+          <h2 > <img className="header-icon" style={ this.estilos } src={ imgTitle } alt="«icon»" /> WeedWay </h2>
         </div>
         <span className="animate__animated animate__fadeInDown nav-button" >
           <button onClick={ ()=>{ this.props.setEstado('Buscar') } } > <i className={'far fa-search navIcon'} > </i> <span style={{fontSize: '16px'}} > Buscar </span> </button>
