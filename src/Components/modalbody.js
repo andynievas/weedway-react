@@ -6,13 +6,25 @@ import Notifications from './notification';
 import Lugares from './lugares';
 
 
+class Buscar extends React.Component{
+
+    render(){
+        return (
+            <div>
+                Busca a tus amigos
+            </div>
+        );
+    }
+}
+
 class ModalBody extends React.Component{
 
     styles = {
         margin: 'auto',
         padding: '0 20px',
         color: 'rgb(220,220,220)',
-        background: 'rgb(60,60,60)',
+        backgroundColor: 'rgba(60,60,60,0.7)',
+        // backdropFilter: 'blur(0px)',
         borderRadius: '20px 20px 0 0',
         // marginTop: '70px',
         position: 'fixed',
@@ -32,7 +44,11 @@ class ModalBody extends React.Component{
     }
 
     view(){
-        if (this.props.view === 'Foto'){
+        if (this.props.view === 'Buscar'){
+            return (
+                <Buscar />
+            );
+        }else if (this.props.view === 'Foto'){
             return (
                 <Foto />
             );

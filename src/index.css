@@ -316,6 +316,10 @@ body{
 #changeUserName input{
   display: block;
   width: 100%;
-  margin: 0;
-  padding: 0px;
+  text-align: center;
+  font-size: 26px;
+  margin: 10px 0;
+  padding: 5px 0;
+  border: none;
+  border-radius: 6px;
 }

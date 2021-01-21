@@ -7,17 +7,6 @@ import Posteo from './Components/postImg.js';
 import Footer from './Components/footer.js';
 
 
-class Search extends React.Component{ // Se va a un Componente
-
-  render(){
-    return <div>
-      <h4>Busca a tus amigos y añadelos</h4>
-      <input type="text" placeholder="Buscar..." />
-      <input type="submit" value="Buscar" />
-    </div>
-  }
-}
-
 class Login extends React.Component{ // Se va a un Componente
 
   state = {
@@ -76,7 +65,7 @@ class Login extends React.Component{ // Se va a un Componente
 
         <div style={{ display: 'flex', width: '100%'}/* El -8px es por los bordes */} >
           <div style={{width: '100%'}} id="weedway">
-            <h2 > <a href="/"> <img src="weedway-icon.png" alt="«icon»" /> WeedWay </a> </h2>
+            <h2 > <img src="weedway-icon.png" alt="«icon»" /> WeedWay </h2>
           </div>
         </div>
 
@@ -171,17 +160,14 @@ class App extends React.Component {
     if( localStorage.getItem('weedway-user') ){
       return (
         <div className="App">
-          <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} />
+          <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} setEstado={this.changEstado} />
           <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
           
           {this.usuarios.map( user=><Posteo key={user.id} posteo={user} /> ) }
-  
-          {/* {this.posts.map( post => <Posteo key={post.id} posteo={post} /> )} */}
-  
+    
           {/* userName={post.userName} profilePhoto={post.profilePhoto} userPost={post.userPost} */}
           
           <Footer setEstado={this.changEstado} />
-          <Search />
         </div>
       );
     } else {

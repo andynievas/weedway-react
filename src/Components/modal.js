@@ -4,7 +4,8 @@ import ModalBody from './modalbody';
 class Modal extends React.Component{
 
     modalStyle = {
-        background: 'rgb(30,30,30,0.5)',
+        backgroundColor: 'rgb(30,30,30,0.5)',
+        backdropFilter: 'blur(6px)',
         color: 'white',
         position: 'fixed',
         top: '0vh',

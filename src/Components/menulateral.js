@@ -5,6 +5,10 @@ import Cuenta from './cuenta';
 
 export default class MenuLateral extends React.Component{
 
+  // state = {
+  //   show: false
+  // }
+
   fondo = {
       position: 'fixed',
       top: '0',
@@ -36,15 +40,13 @@ export default class MenuLateral extends React.Component{
       borderRadius: '2rem'
   }
   
-  first = 0;
+  // first = 0;
   animation = ()=>{
 
     const entrance = "animate__animated animate__bounceInRight";
     const exit = "animate__animated animate__bounceOutRight";
 
-    if(this.first === 0){
-      // console.log(this.first);
-      this.first = 1;
+    if(this.props.first === 0){
       return 'none';
 
     }else if(this.props.estado){
@@ -67,15 +69,6 @@ export default class MenuLateral extends React.Component{
               <div style={{margin: '20px'}} >
                   <button style={this.botonCerrar} onClick={ ()=>{ this.props.showMenu(); }} >&times; Cerrar Menu</button>
                   Hola soy el menu lateral que aparezco desde la derecha
-                  <p>Hola soy la opcion numero 1</p>
-                  <p>Hola soy la opcion numero 2</p>
-                  <p>Hola soy la opcion numero 3</p>
-                  <p>Hola soy la opcion numero 4</p>
-                  <p>Hola soy la opcion numero 5</p>
-                  <p>Hola soy la opcion numero 6</p>
-                  <p>Hola soy la opcion numero 7</p>
-                  <p>Hola soy la opcion numero 8</p>
-                  <p>Hola soy la opcion numero 9</p>
                   
                   <Cuenta />
               </div>
