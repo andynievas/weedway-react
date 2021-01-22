@@ -12,11 +12,14 @@ import imgTitle from './Components/weedway-icon.png';
 class Login extends React.Component{ // Se va a un Componente
 
   state = {
-    name: ''
+    name: '',
+    password: ''
   }
 
   container = {
-    margin: '10vw',
+    width: '80%',
+    maxWidth: '600px',
+    margin: '60px auto',
     color: 'rgb(250,250,190)',
     background: 'tomato',
     borderTop: '1px rgb(250,50,70) solid',
@@ -27,22 +30,14 @@ class Login extends React.Component{ // Se va a un Componente
     boxShadow: '0px 6px 60px -10px red'
   }
 
-  subContainer = {
-    width: '80%',
-    margin: 'auto'
-  }
-
-  inputs = {
-    display: 'block',
-    width: '80%',
-    margin: 'auto',
-  }
+  // subContainer = {
+  //   width: '80%',
+  //   margin: 'auto'
+  // }
 
   icon = {
-    width: '42px',
-    position: 'relative',
-    top: '7px',
-    left: '8px'
+    height: '42px',
+    margin: '6px'
   }
 
   usernameStyle = ()=>{
@@ -51,12 +46,22 @@ class Login extends React.Component{ // Se va a un Componente
       return ("username-label");
     }
     else{
-      return("none");
+      return("username-label-focused");
+    }
+  }
+
+  passwordStyle = ()=>{
+
+    if( this.state.password === "" ){
+      return ("password-label");
+    }
+    else{
+      return("password-label-focused");
     }
   }
 
   onchange = e => {
-    this.setState( { name: e.target.value } );
+    this.setState( { name: e.target.value, password: e.target.value } );
   }
 
   onsubmit = e => {
@@ -72,40 +77,40 @@ class Login extends React.Component{ // Se va a un Componente
     return (
 
       <div>
-
-        <div style={{ display: 'flex', width: '100%'}/* El -8px es por los bordes */} >
-          <div className="weedway" style={{width: '100%'}} id="weedway">
-            <h2 > <img style={ this.icon } src={ imgTitle } alt="«icon»" /> WeedWay </h2>
-          </div>
+        <div className="weedway" style={{ display: 'flex', width: '100%', justifyContent: 'center' }} id="weedway">
+            <img style={ this.icon } src={ imgTitle } alt="«icon»" />
+            <h2 style={{margin: '3px'}} >WeedWay</h2>
         </div>
 
-        <div style={this.container} >
+        {/* <div style={{ height: 'calc( 100vh - 10px )', display: 'flex', justifyContent: 'center', alignItems: 'center' }} > */}
+          <div style={this.container} >
 
-          <h3 style={{textAlign: 'center', fontSize: '34px'}} >Login</h3>
+            <h3 style={{textAlign: 'center', fontSize: '34px'}} >Login</h3>
 
-          <div style={this.subContainer} >
+            <div style={this.subContainer} >
 
-            <form onSubmit={this.onsubmit} autoComplete="on" id="loginForm" >
-              {/* <label className="label" for='username' style={this.label} >Nombre de usuario</label> */}
-              
-              <div style={{ position: 'relative', margin: '10px' }} id='username' >
-                <input type='text' style={this.inputs} onChange={this.onchange} autoComplete="on" /* id='username' */ />
-                <span className={ this.usernameStyle() } >Usuario</span>
-              </div>
+              <form onSubmit={this.onsubmit} autoComplete="on" id="loginForm" >
+                {/* <label className="label" for='username' style={this.label} >Nombre de usuario</label> */}
+                
+                <div style={{ position: 'relative', margin: '10px' }} id='username' >
+                  <input type='text' style={this.inputs} onChange={this.onchange} autoComplete="on" /* id='username' */ />
+                  <span className={ this.usernameStyle() } >Usuario</span>
+                </div>
 
-              {/* <label className="label" for='password-user' style={this.label} >Contraseña</label> */}
+                {/* <label className="label" for='password-user' style={this.label} >Contraseña</label> */}
 
-              <div style={{ position: 'relative', margin: '10px' }} id='password-user' >
-                <input type='password' style={this.inputs} /*id='password-user'*/ />
-                <span className="password-label" >Contraseña</span>
-              </div>
+                <div style={{ position: 'relative', margin: '10px' }} id='password-user' >
+                  <input type='password' style={this.inputs} onChange={this.onchange} /*id='password-user'*/ />
+                  <span className={ this.passwordStyle() } /*"password-label"*/ >Contraseña</span>
+                </div>
 
-              <input type='submit' value='Log in' onClick={ ()=>{} } id="login-btn" />
-            </form>
+                <input type='submit' value='Log in' onClick={ ()=>{} } id="login-btn" />
+              </form>
+
+            </div>
 
           </div>
-
-        </div>
+        {/* </div> */}
 
       </div>
 

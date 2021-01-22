@@ -48,6 +48,10 @@ class ModalBody extends React.Component{
             return (
                 <Buscar />
             );
+        }else if (this.props.view === 'User'){
+            return (<div></div>
+                // <UserProfile nombre del usuario a visitar /> 
+            );
         }else if (this.props.view === 'Foto'){
             return (
                 <Foto />
