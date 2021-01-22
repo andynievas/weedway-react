@@ -19,7 +19,7 @@ class Login extends React.Component{ // Se va a un Componente
   container = {
     width: '80%',
     maxWidth: '600px',
-    margin: '60px auto',
+    margin: '10vh auto',
     color: 'rgb(250,250,190)',
     background: 'tomato',
     borderTop: '1px rgb(250,50,70) solid',
@@ -41,7 +41,6 @@ class Login extends React.Component{ // Se va a un Componente
   }
 
   usernameStyle = ()=>{
-
     if( this.state.name === "" ){
       return ("username-label");
     }
@@ -49,9 +48,7 @@ class Login extends React.Component{ // Se va a un Componente
       return("username-label-focused");
     }
   }
-
   passwordStyle = ()=>{
-
     if( this.state.password === "" ){
       return ("password-label");
     }
@@ -60,8 +57,13 @@ class Login extends React.Component{ // Se va a un Componente
     }
   }
 
-  onchange = e => {
-    this.setState( { name: e.target.value, password: e.target.value } );
+  onchangeUser = e => {
+    // console.log(e.target);
+    this.setState( { name: e.target.value, password: this.state.password } );
+  }
+  onchangePass = e => {
+    // console.log(e.target);
+    this.setState( { name: this.state.name, password: e.target.value } );
   }
 
   onsubmit = e => {
@@ -90,18 +92,15 @@ class Login extends React.Component{ // Se va a un Componente
             <div style={this.subContainer} >
 
               <form onSubmit={this.onsubmit} autoComplete="on" id="loginForm" >
-                {/* <label className="label" for='username' style={this.label} >Nombre de usuario</label> */}
                 
                 <div style={{ position: 'relative', margin: '10px' }} id='username' >
-                  <input type='text' style={this.inputs} onChange={this.onchange} autoComplete="on" /* id='username' */ />
-                  <span className={ this.usernameStyle() } >Usuario</span>
+                  <input type='text' style={this.inputs} onChange={this.onchangeUser} autoComplete="on" id='username-input' />
+                  <label htmlFor="username-input" className={ this.usernameStyle() } >Usuario</label>
                 </div>
 
-                {/* <label className="label" for='password-user' style={this.label} >Contraseña</label> */}
-
                 <div style={{ position: 'relative', margin: '10px' }} id='password-user' >
-                  <input type='password' style={this.inputs} onChange={this.onchange} /*id='password-user'*/ />
-                  <span className={ this.passwordStyle() } /*"password-label"*/ >Contraseña</span>
+                  <input type='password' style={this.inputs} onChange={this.onchangePass} id='password-user-input' />
+                  <label htmlFor="password-user-input" className={ this.passwordStyle() } /*"password-label"*/ >Contraseña</label>
                 </div>
 
                 <input type='submit' value='Log in' onClick={ ()=>{} } id="login-btn" />
@@ -111,6 +110,27 @@ class Login extends React.Component{ // Se va a un Componente
 
           </div>
         {/* </div> */}
+
+        <div className="allRightsReserved"
+          style={{
+            width: '100%',
+            height: 'calc(100vh - 500px)',
+            minHeight: '100px',
+            maxHeight: '200px'
+          }} >
+
+          <h2
+            // style={{
+            //   position: 'absolute',
+            //   bottom: '0'
+            // }}
+            
+            >Todos los derechos reservados
+            <span style={{display: 'block', padding: '6px 0'}} >©2021</span>
+
+          </h2>
+            
+        </div>
 
       </div>
 
@@ -187,10 +207,8 @@ class App extends React.Component {
           <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} setEstado={this.changEstado} />
           <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
           
-          {this.usuarios.map( user=><Posteo key={user.id} posteo={user} /> ) }
-    
-          {/* userName={post.userName} profilePhoto={post.profilePhoto} userPost={post.userPost} */}
-          
+          {this.usuarios.map( user=><Posteo key={user.id} posteo={user} setEstado={this.changEstado} /> ) }
+          <br/> <br/> <br/>
           <Footer setEstado={this.changEstado} />
         </div>
       );

@@ -48,10 +48,6 @@ class ModalBody extends React.Component{
             return (
                 <Buscar />
             );
-        }else if (this.props.view === 'User'){
-            return (<div></div>
-                // <UserProfile nombre del usuario a visitar /> 
-            );
         }else if (this.props.view === 'Foto'){
             return (
                 <Foto />
@@ -67,6 +63,26 @@ class ModalBody extends React.Component{
         }else if (this.props.view === 'Lugares'){
             return (
                 <Lugares />
+            );
+        }else{
+            // if (this.props.view === 'User')
+            return (
+                <div style={{ backgroundColor: 'green' }} >
+                    Posteos recientes:
+                    <div>
+                        <div>Total posts: 6</div>
+                    </div>
+
+                    <div className="profile-posts" >
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
+                    </div>
+                </div>
+                // <UserProfile nombre del usuario a visitar /> 
             );
         }
     }
