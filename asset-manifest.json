@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/weedway-react/static/css/main.a78af1a9.chunk.css",
-    "main.js": "/weedway-react/static/js/main.225b9f4f.chunk.js",
-    "main.js.map": "/weedway-react/static/js/main.225b9f4f.chunk.js.map",
+    "main.css": "/weedway-react/static/css/main.ae3aa2cd.chunk.css",
+    "main.js": "/weedway-react/static/js/main.f5111ed3.chunk.js",
+    "main.js.map": "/weedway-react/static/js/main.f5111ed3.chunk.js.map",
     "runtime-main.js": "/weedway-react/static/js/runtime-main.fd65cedc.js",
     "runtime-main.js.map": "/weedway-react/static/js/runtime-main.fd65cedc.js.map",
     "static/js/2.c101de94.chunk.js": "/weedway-react/static/js/2.c101de94.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.5cafc096.chunk.js": "/weedway-react/static/js/3.5cafc096.chunk.js",
     "static/js/3.5cafc096.chunk.js.map": "/weedway-react/static/js/3.5cafc096.chunk.js.map",
     "index.html": "/weedway-react/index.html",
-    "static/css/main.a78af1a9.chunk.css.map": "/weedway-react/static/css/main.a78af1a9.chunk.css.map",
+    "static/css/main.ae3aa2cd.chunk.css.map": "/weedway-react/static/css/main.ae3aa2cd.chunk.css.map",
     "static/js/2.c101de94.chunk.js.LICENSE.txt": "/weedway-react/static/js/2.c101de94.chunk.js.LICENSE.txt",
     "static/media/weedway-icon.c6c4b7ea.png": "/weedway-react/static/media/weedway-icon.c6c4b7ea.png"
   },
   "entrypoints": [
     "static/js/runtime-main.fd65cedc.js",
     "static/js/2.c101de94.chunk.js",
-    "static/css/main.a78af1a9.chunk.css",
-    "static/js/main.225b9f4f.chunk.js"
+    "static/css/main.ae3aa2cd.chunk.css",
+    "static/js/main.f5111ed3.chunk.js"
   ]
 }
