@@ -66,6 +66,7 @@ body{
   
   .weedway{
     background-color: rgb(30,30,30);
+    padding: 5px 0;
   }
   .weedway h2{
     color: rgb(40,230,40);
@@ -100,7 +101,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
   }
   .allRightsReserved h2{
     /* color: rgb(110,230,110); */
@@ -435,20 +436,46 @@ input#login-btn:focus{
   margin: 2px;
 }
 
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill{
+  border: none;
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(255, 251, 139) inset;
+}
+input:-webkit-autofill ~ .username-label-focused{
+  color: black;
+}
+input:-webkit-autofill:hover{
+  /* -webkit-text-fill-color: black; */
+  -webkit-box-shadow: 0 0 0px 100px rgb(255, 184, 137) inset;
+}
+input:-webkit-autofill:focus{
+  /* -webkit-text-fill-color: whitesmoke; */
+  -webkit-box-shadow: 0 0 0px 100px rgb(255, 128, 105) inset !important;
+}
+/* END Change autocomplete styles in WebKit */
+
+
 /* .nav-Links li:nth-child() */
 
 @media screen and (max-width: 400px){
-  #weedway-title h2{
-    /* font-size: 29px; */
-    display: none;
+  .weedway h2{
+    margin: 0 2px;
   }
-  #weedway-title h2 img{
-    width: 34px;
+  #weedway-title h2{
+    font-size: 22px;
+    line-height: 44px;
+    /* display: none; */
+  }
+  #weedway-title img{
+    height: 34px;
     position: relative;
-    top: 6px;
-    left: 4px;
+    top: 15px;
+    /* left: ; */
   }
 }
+
+/* LOGIN */
 @media screen and (min-height: 660px){
   .allRightsReserved{
     position: absolute;

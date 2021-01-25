@@ -74,12 +74,12 @@ class ModalBody extends React.Component{
                     </div>
 
                     <div className="profile-posts" >
-                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
-                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
-                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
-                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
-                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
-                        <img src="https://thispersondoesnotexist.com/image" alt="profile-post-image" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
+                        <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
                     </div>
                 </div>
                 // <UserProfile nombre del usuario a visitar /> 

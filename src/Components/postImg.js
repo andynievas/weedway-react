@@ -147,7 +147,7 @@ function PostImg(props){
       <div className="post-full" >
         <div className="userName" >
           <img className="fondo-negro user-photo" src={profilePhoto} alt="user-logo" />
-          <h3 className="user-title" style={{ cursor: 'pointer', width: '60%' }} onClick={ ()=>{ props.setEstado(userName); } } >{userName}</h3>
+          <h3 className="user-title" style={{ cursor: 'pointer', width: 'calc(100% - 130px)' }} onClick={ ()=>{ props.setEstado(userName); } } >{userName}</h3>
           <Dropdown user={userName} />
         </div>
         <img className=" img-post fondo-negro" src={userPost} alt="img-posted" />

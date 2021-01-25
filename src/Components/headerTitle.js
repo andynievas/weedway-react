@@ -26,9 +26,7 @@ class HeaderTitle extends React.Component{
     // var newURL = window.location.protocol + "//" + window.location.host + "/";
 
     return (
-      <div
-      // className=""
-      style={{border: '1px lightgreen solid', display: 'flex', width: 'calc(100% - 4px)'}/* El -8px es por los bordes */} >
+      <div style={{border: '1px lightgreen solid', display: 'flex', width: 'calc(100% - 4px)'}/* El -8px es por los bordes */} >
         
         <div className="animate__animated animate__fadeInDown weedway" style={{width: '80%', minWidth: '100px'}} id="weedway-title">
           <div>

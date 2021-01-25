@@ -87,18 +87,19 @@ class Login extends React.Component{ // Se va a un Componente
         {/* <div style={{ height: 'calc( 100vh - 10px )', display: 'flex', justifyContent: 'center', alignItems: 'center' }} > */}
           <div style={this.container} >
 
-            <h3 style={{textAlign: 'center', fontSize: '34px'}} >Login</h3>
+            <h3 style={{margin: '10px', textAlign: 'center', fontSize: '34px'}} >Welcome to WeedWay</h3>
+            <p style={{margin: '0 0 30px 0', textAlign: 'center', fontSize: '20px'}} >Tu sitio favorito!</p>
 
             <div style={this.subContainer} >
 
               <form onSubmit={this.onsubmit} autoComplete="on" id="loginForm" >
                 
-                <div style={{ position: 'relative', margin: '10px' }} id='username' >
+                <div style={{ position: 'relative', margin: '20px 30px' }} id='username' >
                   <input type='text' style={this.inputs} onChange={this.onchangeUser} autoComplete="on" id='username-input' />
                   <label htmlFor="username-input" className={ this.usernameStyle() } >Usuario</label>
                 </div>
 
-                <div style={{ position: 'relative', margin: '10px' }} id='password-user' >
+                <div style={{ position: 'relative', margin: '20px 30px' }} id='password-user' >
                   <input type='password' style={this.inputs} onChange={this.onchangePass} id='password-user-input' />
                   <label htmlFor="password-user-input" className={ this.passwordStyle() } /*"password-label"*/ >Contraseña</label>
                 </div>
@@ -114,9 +115,7 @@ class Login extends React.Component{ // Se va a un Componente
         <div className="allRightsReserved"
           style={{
             width: '100%',
-            height: 'calc(100vh - 500px)',
-            minHeight: '100px',
-            maxHeight: '200px'
+            height: '140px'
           }} >
 
           <h2
@@ -126,6 +125,7 @@ class Login extends React.Component{ // Se va a un Componente
             // }}
             
             >Todos los derechos reservados
+            <span style={{display: 'block', padding: '6px 0'}} >Developed By Andy Nievas</span>
             <span style={{display: 'block', padding: '6px 0'}} >©2021</span>
 
           </h2>
@@ -164,37 +164,37 @@ class App extends React.Component {
     {
       userName: 'andynievas92',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
-      userPost: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://picsum.photos/700/700',
       id: 0
     },
     {
       userName: 'reyJulian',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
-      userPost: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://picsum.photos/600/600',
       id: 1
     },
     {
       userName: 'mamfristo',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
-      userPost: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://picsum.photos/500/500',
       id: 2
     },
     {
       userName: 'salchipapa',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
-      userPost: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://picsum.photos/400/400',
       id: 3
     },
     {
       userName: 'ndeaaaAa',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
-      userPost: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://picsum.photos/300/300',
       id: 4
     },
     {
       userName: 'otros',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
-      userPost: 'https://thispersondoesnotexist.com/image',
+      userPost: 'https://picsum.photos/200/400',
       id: 5
     }
   ]
