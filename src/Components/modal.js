@@ -22,7 +22,6 @@ class Modal extends React.Component{
         const exit = "animate__animated animate__backOutDown";
 
         if(this.first === 0){
-            console.log(this.first);
             this.first = 1;
             return 'none';
         }

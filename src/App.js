@@ -2,8 +2,11 @@
 import React from 'react';
 
 import HeaderTitle from './Components/headerTitle.js';
+
+import MenuLateral from './Components/menulateral';
+
 import Modal from './Components/modal.js';
-import Posteo from './Components/postImg.js';
+import PostsTotal from './Components/postsTotal.js';
 import Footer from './Components/footer.js';
 
 // Static Files
@@ -93,7 +96,7 @@ class Login extends React.Component{ // Se va a un Componente
             <div style={this.subContainer} >
 
               <form onSubmit={this.onsubmit} autoComplete="on" id="loginForm" >
-                
+
                 <div style={{ position: 'relative', margin: '20px 30px' }} id='username' >
                   <input type='text' style={this.inputs} onChange={this.onchangeUser} autoComplete="on" id='username-input' />
                   <label htmlFor="username-input" className={ this.usernameStyle() } >Usuario</label>
@@ -123,13 +126,13 @@ class Login extends React.Component{ // Se va a un Componente
             //   position: 'absolute',
             //   bottom: '0'
             // }}
-            
+
             >Todos los derechos reservados
             <span style={{display: 'block', padding: '6px 0'}} >Developed By Andy Nievas</span>
             <span style={{display: 'block', padding: '6px 0'}} >©2021</span>
 
           </h2>
-            
+
         </div>
 
       </div>
@@ -147,7 +150,6 @@ class App extends React.Component {
     this.menuLateral = {
       show: !this.menuLateral.show
     }
-    // console.log(this.menuLateral)
   }
 
   state = {
@@ -159,7 +161,13 @@ class App extends React.Component {
     this.setState({modal: !this.state.modal});
     this.textoModal = texto;
   }
+  usuarios = [];
 
+  printUsers = ()=>{
+    let contenido = document.getElementById("seccionPublicaciones");
+    this.usuarios.map( user=>contenido.innerHTML += user.userName );
+  }
+/*
   usuarios = [
     {
       userName: 'andynievas92',
@@ -182,13 +190,13 @@ class App extends React.Component {
     {
       userName: 'salchipapa',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
-      userPost: 'https://picsum.photos/400/400',
+      userPost: 'https://loremflickr.com/460/460',
       id: 3
     },
     {
       userName: 'ndeaaaAa',
       profilePhoto: 'https://thispersondoesnotexist.com/image',
-      userPost: 'https://picsum.photos/300/300',
+      userPost: 'https://www.fillmurray.com/560/560',
       id: 4
     },
     {
@@ -198,7 +206,7 @@ class App extends React.Component {
       id: 5
     }
   ]
-
+*/
   render(){
 
     if( localStorage.getItem('weedway-user') ){
@@ -206,9 +214,9 @@ class App extends React.Component {
         <div className="App">
           <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} setEstado={this.changEstado} />
           <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
-          
-          {this.usuarios.map( user=><Posteo key={user.id} posteo={user} setEstado={this.changEstado} /> ) }
-          <br/> <br/> <br/>
+
+          <PostsTotal />
+
           <Footer setEstado={this.changEstado} />
         </div>
       );
@@ -217,7 +225,7 @@ class App extends React.Component {
     }
 
   }
-  
+
 }
 
 export default App;

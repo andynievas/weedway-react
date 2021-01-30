@@ -5,32 +5,20 @@ import Cuenta from './cuenta';
 
 export default class MenuLateral extends React.Component{
 
-  // state = {
-  //   show: false
-  // }
-
-  fondo = {
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      right: '0',
-      bottom: '0',
-      backgroundColor: 'rgb(0,0,0,0.6)',
-      zIndex: '1'
-  }
   estiloMenuLateral = {
     position: 'fixed',
     right: '0',
     top: '0',
     bottom: '0',
     width: '40%',
+    height: '100vh',
     minWidth: '300px',
     maxWidth: '500px',
     backgroundColor: 'rgb(30,30,30)',
   //   backdropFilter: 'blur(40px)',
     boxShadow: '0px 0px 16px 10px rgb(20,20,20)',
     overflowY: 'auto',
-    zIndex: '2'
+    zIndex: '5'
   }
   botonCerrar = {
       display: 'block',
@@ -39,12 +27,12 @@ export default class MenuLateral extends React.Component{
       fontSize: '30px',
       borderRadius: '2rem'
   }
-  
+
   // first = 0;
   animation = ()=>{
 
-    const entrance = "animate__animated animate__bounceInRight";
-    const exit = "animate__animated animate__bounceOutRight";
+    const entrance = "animate__animated animate__fadeInRight";
+    const exit = "animate__animated animate__fadeOutRight";
 
     if(this.props.first === 0){
       return 'none';
@@ -58,18 +46,18 @@ export default class MenuLateral extends React.Component{
       return exit;
     }
   }
-  
+
   render(){
 
     return (
-      <div style={this.fondo} className={ this.animation() } id='menuLateral' >
+      <div /*style={this.fondo}*/  id='menuLateral' >
 
-          <div style={this.estiloMenuLateral} >
+          <div style={this.estiloMenuLateral} className={ this.animation() } >
 
               <div style={{margin: '20px'}} >
                   <button style={this.botonCerrar} onClick={ ()=>{ this.props.showMenu(); }} >&times; Cerrar Menu</button>
                   Hola soy el menu lateral que aparezco desde la derecha
-                  
+
                   <Cuenta />
               </div>
 
@@ -78,5 +66,5 @@ export default class MenuLateral extends React.Component{
       </div>
     );
   }
-  
+
 }

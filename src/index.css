@@ -1,4 +1,9 @@
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body{
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -7,7 +12,7 @@ body{
     /* padding-bottom: 60px; */
     overflow: visible;
   }
-  
+
   button{
     font-size: 20px;
     text-align: center;
@@ -27,11 +32,11 @@ body{
     border-radius: 5px;
     /* box-shadow: 0px 0px 12px 1px grey; */
   }
-  
+
   .title{
     text-align: center;
   }
-  
+
   .user-title{
     color: rgb(40,40,50);
     margin: 0;
@@ -63,38 +68,27 @@ body{
     margin: 10px;
     border-radius: 50%;
   }
-  
-  .weedway{
-    background-color: rgb(30,30,30);
-    padding: 5px 0;
-  }
-  .weedway h2{
-    color: rgb(40,230,40);
-    max-width: 400px;
-    margin: 0 8px;
-    font-family: monospace;
-    font-size: 40px;
-    text-align: center;
-    cursor: pointer;
-  }
-  #weedway-title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #weedway-title div{
-    display: flex;
-    max-width: 500px;
-  }
-  #weedway-title img{ /* Este es el icono weedway */
-    height: 44px;
-  }
-  /* img .header-icon{
-    width: 42px;
-    position: relative;
-    top: 7px;
-    left: 8px;
-  } */
+
+/* Div del titulo (y el icono) en HeaderTitle */
+#weedway-title{
+  /* background-color: rgb(30,30,30); */
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#weedway-title h2{
+  color: rgb(40,230,40);
+  max-width: 400px;
+  margin-left: 4px;
+  font-family: monospace;
+  font-size: 34px;
+  text-align: center;
+  cursor: pointer;
+}
+#weedway-title img{ /* Este es el icono weedway */
+  height: 40px;
+}
 
   .allRightsReserved{
     background-color: rgb(30,30,30);
@@ -112,26 +106,18 @@ body{
     font-weight: lighter;
     text-align: center;
   }
-  
-  .header{
-    background-color: black;
-    position: sticky;
-    top: 0;
-    box-shadow: 0px 0px 10px 5px black; /* horizontal(+ abajo) vertical distancia intensidad */
-    z-index: 1;
-  }
-  
+
   .nav-button{
     width: 10%;
-    min-width: 80px;
+    min-width: 70px;
   }
   .nav-button button{
     width: 100%;
     height: 100%;
     padding-top: 5px;
     color: rgb(40,230,40);
-    background-color: rgb(50,50,50);
-    /* font-size: 24px; */
+    background-color: rgba(50,50,50,0.5);
+    border-bottom: 0px purple solid;
     transition: all .2s;
   }
   .nav-button button:hover{
@@ -149,6 +135,7 @@ body{
     text-decoration: none;
     line-height: 18px;
     font-size: 14px;
+    border-bottom: 0px purple solid;
     transition: all .2s;
   }
   .navItem:hover{
@@ -171,7 +158,7 @@ body{
     display: block;
     font-size: 22px;
   }
-  
+
   .footer{
     display: flex;
     position: fixed;
@@ -190,7 +177,7 @@ body{
     background-color: rgb(50,200,50);
     border-radius: 20px 20px 0 0;
   }
-  
+
   .btn-block{
     display: block;
     width: 100%;
@@ -204,12 +191,11 @@ body{
   .btn-options{
     background-color: rgba(255,228,196,0.6);
   }
-  
+
   .post-full{
-    /* border: 2px black solid; */
     border-radius: 10px;
     background-color: bisque;
-    width: 97%;
+    width: 97%; /* Minimo margen de pantalla para <500px */
     max-width: 500px;
     margin: auto;
     padding: 1px;
@@ -261,7 +247,7 @@ body{
   .d-none{
     display: none;
   }
-  
+
   .comentar .comentario-text-input{
     background-color: rgba(255,255,255,0);
     font-size: 16px;
@@ -291,7 +277,7 @@ body{
     opacity: 1;
     height: 50px;
   }
-  
+
   .dropdown{
     /* display: none; */
     opacity: 0;
@@ -458,20 +444,12 @@ input:-webkit-autofill:focus{
 
 /* .nav-Links li:nth-child() */
 
-@media screen and (max-width: 400px){
-  .weedway h2{
-    margin: 0 2px;
-  }
+@media screen and (max-width: 340px){
   #weedway-title h2{
-    font-size: 22px;
-    line-height: 44px;
-    /* display: none; */
+    font-size: 26px;
   }
   #weedway-title img{
     height: 34px;
-    position: relative;
-    top: 15px;
-    /* left: ; */
   }
 }
 
