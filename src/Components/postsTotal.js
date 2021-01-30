@@ -65,18 +65,20 @@ class Comentario extends React.Component{ // Quiero hacer autofocus al clickear 
 class Interaction extends React.Component {
 
     state = {
-      comments: [
-        {
-          'user': 'Usuario2',
-          'comentario': 'Que wapo estas <3',
-          'id': 0
-        },
-        {
-          'user': 'Usuario3',
-          'comentario': 'Bombonaso',
-          'id': 1
-        }
-      ]
+      comments: []
+    }
+
+    fetchData = ()=>{
+      if(JSON.stringify(this.state.comments) === '[]'){
+
+          console.log("Estoy dentro del if");
+          fetch('https://sample-api-practice-node.herokuapp.com/comentarios')
+              .then( e=>{ console.log(e); if(e.status === 200){let data = e.json(); return data } } )
+              .then( comments=>{ this.setState({comments: comments}); console.log(this.state); } )
+
+      }else{
+        console.log("Estoy dentro del ELSE")
+      }
     }
 
     addComment = (user, comentario, id) => {
@@ -97,6 +99,7 @@ class Interaction extends React.Component {
     }
 
     render(){
+      this.fetchData();
       return (
         <div className="interaction-section" >
           <InteractionFav/>
