@@ -187,7 +187,7 @@ export default class PostsTotal extends React.Component{
     if(JSON.stringify(this.state.users) === '[]'){
 
         console.log("Estoy dentro del if");
-        fetch('http://sample-api-practice-node.herokuapp.com/usuarios')
+        fetch('https://sample-api-practice-node.herokuapp.com/usuarios')
             .then( e=>{ console.log(e); if(e.status === 200){let data = e.json(); return data } } )
             .then( users=>{ this.setState({users: users}); console.log(this.state); } )
 
