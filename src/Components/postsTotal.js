@@ -92,11 +92,37 @@ class Interaction extends React.Component {
         comments: this.state.comments.concat([newComment])
       });
 
-      setTimeout( ()=>{
-        console.log(this.state.comments);
-      } ,1000);
-
     }
+
+    // Funciones y estados del componente Comentario
+      ident = 2;
+
+      comentario = {
+        'user': localStorage.getItem('weedway-user'),
+        'comentario': '',
+        'id': this.state.comments.length
+      }
+
+      onsubmit = e => {
+        e.preventDefault();
+        if( this.comentario.comentario.trim() !== '' ){
+          this.addComment(this.comentario.user, this.comentario.comentario, this.comentario.id);
+          this.ident += 1;
+          this.comentario.comentario = '';
+        }
+        e.target[0].value = ''; // e.target[0] es el input correspondiente al post
+        console.log(this.comentario)
+      }
+
+      onchange = e => {
+        // this.comentario = {
+        //   [e.target.name]: e.target.value
+        // }
+
+        this.comentario.comentario = e.target.value;
+
+      }
+    // Termina el componente Comentrario
 
     render(){
       this.fetchData();
@@ -106,7 +132,11 @@ class Interaction extends React.Component {
           <i className="far fa-share interaction-button" ></i>
           <p className="description" > <span>Usuario1</span> Este es mi primer post</p>
           {this.state.comments.map( e=> <p key={e.id} className="animate__animated animate__zoomIn description comentario" > { <span> {e.user} </span> } {e.comentario} </p> )}
-          <Comentario addComment={this.addComment} />
+          {/*<Comentario addComment={this.addComment} />*/}
+            <form action="http://localhost:3001/comentar" method="POST" className="comentar " onSubmit={this.onsubmit} autoComplete="off" >
+              <input type="text" className="comentario-text-input" name="comentario" onChange={this.onchange} placeholder="Escribe aquí tu comentario..." />
+              <input type="submit" className="send" style={{padding: '0'}} value='send' />
+            </form>
           <input type="text" />
         </div>
       );
