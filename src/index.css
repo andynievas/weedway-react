@@ -51,7 +51,7 @@ body{
     position: relative;
   }
   .options{
-    position: absolute;
+    position: fixed;
     right: 16px;
     font-size: 26px;
     color: rgb(40,40,40);
@@ -192,63 +192,60 @@ body{
     background-color: rgba(255,228,196,0.6);
   }
 
-  .post-full{
+.post-full{
     border-radius: 10px;
     background-color: bisque;
     width: 97%; /* Minimo margen de pantalla para <500px */
     max-width: 500px;
     margin: auto;
     padding: 1px;
-  }
-  .img-post{
+}
+.img-post{
     width: 100%;
-  }
-  .interaction-section{
+}
+.interaction-section{
     padding: 4px 10px;
-  }
-  .interaction-button{
+}
+.interaction-button{
     padding: 5px;
     color: rgb(40,40,40);
     font-size: 28px;
     cursor: pointer;
-  }
-  .fondo-negro{
+}
+.fondo-negro{
     background-color: black;
-  }
-  .description{
+}
+.description{
     color: rgb(40,40,50);
     margin: 0;
     padding: 5px;
-  }
-  .description span{
+}
+.description span{
     font-weight: bold;
-  }
-  .press-comentario{
+}
+.press-comentario{
     padding: 5px 0;
     width: 100%;
     cursor: pointer;
     background-color: rgba(0,0,0,0);
     border: none;
     font-size: 14px;
-  }
-  .comentar{
-    color: rgb(40,40,50);
+}
+.comentar{
     display: flex;
     margin: 5px;
     border-bottom: 1px grey solid;
-    /* border-radius: 5px; */
-    opacity: 80%;
     transition: all 1s;
-  }
-  .comentario{
+}
+.comentario{
       margin-left: 20px;
       font-size: 14px;
-  }
-  .d-none{
+}
+.d-none{
     display: none;
-  }
+}
 
-  .comentar .comentario-text-input{
+.comentario-text-input{
     background-color: rgba(255,255,255,0);
     font-size: 16px;
     border: none;
@@ -256,29 +253,17 @@ body{
     width: 100%;
     padding: 0;
     transition: all 1s;
-  }
-  .comentar .send{
+}
+.send{
     background-color: rgba(255,255,255,0);
+    color: black;
     font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    height: 0px;
+}
 
-    visibility: hidden;
-    opacity: 0;
-    transition: visibilty 1s, opacity 2s,height 0.2s ease-in;
-  }
-  .comentar .send:focus{
-    border: 2px tomato solid;
-  }
-  .comentar .comentario-text-input:focus ~ .send, .comentar:hover .send{
-    visibility: visible;
-    opacity: 1;
-    height: 50px;
-  }
-
-  .dropdown{
+.dropdown{
     /* display: none; */
     opacity: 0;
     position: absolute;

@@ -4,34 +4,28 @@ import React from 'react';
 
 class Options extends React.Component{
 
-    modalStyle = {
-        background: 'rgba(0,0,0,0.2)',
-        backdropFilter: 'blur(8px)',
-        position: 'fixed',
-        top: '-100px',
-        bottom: '0',
-        left: '100px',
-        right: '0',
-        zIndex: '4'
-    }
-
     containerStyle = {
         background: 'rgba(255,228,196,0.7)',
         position: 'fixed',
-        left: '100px',
-        right: '100px',
+        top: '60px',
+        left: '0px',
+        right: '0px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '430px',
-        border: '5px red solid'
+        borderRadius: '0 0 10px 10px',
+        height: '230px',
+        zIndex: '4'
     }
 
     closeButton = {
-        background: 'rgb(25,28,196)',
+        fontSize: '26px',
+        color: 'rgb(40,40,40)',
         position: 'fixed',
-        top: '60px'
+        top: '16px',
+        right: '20px',
+        cursor: 'pointer'
     }
 
     buttonStyle = {
@@ -41,14 +35,12 @@ class Options extends React.Component{
 
     render(){
         return (
-            <div
-            style={this.modalStyle} >
-
-                <i className="fas fa-times options" onClick={ ()=>{this.props.setEstado(); } } ></i>
-                <div className="animate__animated animate__fadeInUp" style={this.containerStyle} >
+            <div >
+                <i className="fas fa-times " style={this.closeButton} onClick={ ()=>{this.props.setEstado(); } } ></i>
+                <div style={this.containerStyle} >
                     <button className="btn-block btn-options" >Dejar de seguir a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
                     <button className="btn-block btn-options" >Compartir publicación de <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
-                    <button className="btn-block btn-options" >Reportar a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
+                    <button className="btn-block btn-options" style={{borderRadius: '0 0 9px 9px'}} >Reportar a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
                 </div>
             </div>
         );

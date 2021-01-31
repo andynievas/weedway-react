@@ -22,45 +22,6 @@ class InteractionFav extends React.Component{
     }
   }
 
-class Comentario extends React.Component{ // Quiero hacer autofocus al clickear en el comentar
-
-    ident = 0;
-
-    comentario = {
-      'user': localStorage.getItem('weedway-user'),
-      'comentario': '',
-      'id': this.ident
-    }
-
-    onsubmit = e => {
-      e.preventDefault();
-      if( this.comentario.comentario.trim() !== '' ){
-        this.props.addComment(this.comentario.user, this.comentario.comentario, this.comentario.id);
-        this.ident += 1;
-        this.comentario.comentario = '';
-      }
-      e.target[0].value = ''; // e.target[0] es el input correspondiente al post
-      console.log(this.comentario)
-    }
-
-    onchange = e => {
-      // this.comentario = {
-      //   [e.target.name]: e.target.value
-      // }
-
-      this.comentario.comentario = e.target.value;
-
-    }
-
-    render(){
-        return (
-          <form className="comentar " onSubmit={this.onsubmit} autoComplete="off" >
-            <input type="text" className="comentario-text-input" name="comentario" onChange={this.onchange} placeholder="Escribe aquí tu comentario..." />
-            <input type="submit" className="send" style={{padding: '0'}} value='send' />
-          </form>
-        );
-    }
-  }
 
 class Interaction extends React.Component {
 
@@ -74,7 +35,8 @@ class Interaction extends React.Component {
           console.log("Estoy dentro del if");
           fetch('https://sample-api-practice-node.herokuapp.com/comentarios')
               .then( e=>{ console.log(e); if(e.status === 200){let data = e.json(); return data } } )
-              .then( comments=>{ this.setState({comments: comments}); console.log(this.state); } )
+              .then( comments=>{ this.setState({comments: comments}); console.log(this.state); /* SpinnerWrapper display none */ } )
+              .catch( err=>console.log(err) )
 
       }else{
         console.log("Estoy dentro del ELSE")
@@ -132,10 +94,9 @@ class Interaction extends React.Component {
           <i className="far fa-share interaction-button" ></i>
           <p className="description" > <span>Usuario1</span> Este es mi primer post</p>
           {this.state.comments.map( e=> <p key={e.id} className="animate__animated animate__zoomIn description comentario" > { <span> {e.user} </span> } {e.comentario} </p> )}
-          {/*<Comentario addComment={this.addComment} />*/}
             <form action="http://localhost:3001/comentar" method="POST" className="comentar " onSubmit={this.onsubmit} autoComplete="off" >
               <input type="text" className="comentario-text-input" name="comentario" onChange={this.onchange} placeholder="Escribe aquí tu comentario..." />
-              <input type="submit" className="send" style={{padding: '0'}} value='send' />
+              <input type="submit" className="send" value='send' />
             </form>
           <input type="text" />
         </div>
@@ -155,7 +116,7 @@ class Dropdown extends React.Component{
 
     render(){
       if(this.state.show){
-        {/*document.getElementsByTagName('body')[0].style = "overflow: hidden;";*/}
+        document.getElementsByTagName('body')[0].style = "overflow: hidden;";
 
         return (
           <Options

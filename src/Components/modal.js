@@ -18,8 +18,8 @@ class Modal extends React.Component{
 
     first = 0;
     animation = () => {
-        const entrance = "animate__animated animate__backInUp";
-        const exit = "animate__animated animate__backOutDown";
+        const entrance = "animate__animated animate__fadeInUp";
+        const exit = "animate__animated animate__fadeOutDown";
 
         if(this.first === 0){
             this.first = 1;
