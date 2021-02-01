@@ -50,7 +50,7 @@ export default class MenuLateral extends React.Component{
   render(){
 
     return (
-      <div /*style={this.fondo}*/  id='menuLateral' >
+      <div style={{ position: 'fixed', zIndex: '4'}}  id='menuLateral' >
 
           <div style={this.estiloMenuLateral} className={ this.animation() } >
 

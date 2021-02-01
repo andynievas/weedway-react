@@ -9,13 +9,10 @@ class EditarDatos extends React.Component{
     }
     onchange = e => {this.setState( { name: e.target.value } );}
     onsubmit = e => {
-        e.preventDefault();
-        if( this.state.name !== '' ){
-          localStorage.setItem('weedway-user', this.state.name);
-        }
+        // e.preventDefault();
+
         //e.target[0].value = ''; // e.target[0] es el input correspondiente al post
         console.log(this.state);
-        window.location.reload();
       }
 
     edit = {
@@ -48,9 +45,9 @@ class EditarDatos extends React.Component{
         }else {
             return (
                 <div >
-                    <form className="animate__animated animate__fadeInUp" style={{margin: '20px 0'}} onSubmit={this.onsubmit} id="changeUserName" autoComplete="off" >
+                    <form action="http://localhost:3001/comentar" method="POST" className="animate__animated animate__fadeInUp" style={{margin: '20px 0'}} onSubmit={this.onsubmit} id="changeUserName" autoComplete="off" >
                         <button style={this.edit} onClick={ ()=>{this.props.setEstado(); } } >Cancelar</button>
-                        <input type="text" onChange={this.onchange} placeholder="Username" />
+                        <input type="text" name="username" onChange={this.onchange} placeholder="Username" />
                         <input type="submit" value="Guardar" style={{ backgroundColor: 'rgb(20,180,20)', color: 'white', cursor: 'pointer' }} />
                         <button style={this.logOut} id='logOut' onClick={ (e)=>{ e.preventDefault(); document.getElementById('confirm').classList.add('animate__fadeInUp'); document.getElementById('confirm').classList.remove('none'); } } >Cerrar sesión</button>
                     </form>
@@ -90,7 +87,7 @@ class Cuenta extends React.Component{
         backgroundColor: 'red',
         borderRadius: '2rem'
     }
-    
+
     render(){
         if(this.state.show){
             return (
@@ -107,7 +104,7 @@ class Cuenta extends React.Component{
                     <p>Hola soy la opcion numero 8</p>
                     <p>Hola soy la opcion numero 9</p>
                     <EditarDatos mostrar={this.state.show} setEstado={this.changEstado} />
-    
+
                     {/* <button style={this.logOut} id='logOut' onClick={ ()=>{localStorage.removeItem('weedway-user'); window.location.reload()} } >Cerrar sesión</button> */}
                 </div>
             );

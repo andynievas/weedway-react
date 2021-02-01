@@ -32,15 +32,14 @@ class Interaction extends React.Component {
     fetchData = ()=>{
       if(JSON.stringify(this.state.comments) === '[]'){
 
-          console.log("Estoy dentro del if");
           fetch('https://sample-api-practice-node.herokuapp.com/comentarios')
-              .then( e=>{ console.log(e); if(e.status === 200){let data = e.json(); return data } } )
-              .then( comments=>{ this.setState({comments: comments}); console.log(this.state); /* SpinnerWrapper display none */ } )
+              .then( e=>{ if(e.status === 200){let data = e.json(); return data } } )
+              .then( comments=>{ this.setState({comments: comments}); /* console.log(this.state);  SpinnerWrapper display none */ } )
               .catch( err=>console.log(err) )
 
-      }else{
+      }/*else{
         console.log("Estoy dentro del ELSE")
-      }
+      }*/
     }
 
     addComment = (user, comentario, id) => {
@@ -96,9 +95,8 @@ class Interaction extends React.Component {
           {this.state.comments.map( e=> <p key={e.id} className="animate__animated animate__zoomIn description comentario" > { <span> {e.user} </span> } {e.comentario} </p> )}
             <form action="http://localhost:3001/comentar" method="POST" className="comentar " onSubmit={this.onsubmit} autoComplete="off" >
               <input type="text" className="comentario-text-input" name="comentario" onChange={this.onchange} placeholder="Escribe aquí tu comentario..." />
-              <input type="submit" className="send" value='send' />
+              <input type="submit" className="send" value="Publicar" />
             </form>
-          <input type="text" />
         </div>
       );
     }
@@ -147,7 +145,7 @@ class Posteo extends React.Component{
     const userPost = this.props.usuario.userPost;
 
     return (
-      <div style={{marginBottom: '30px'}} >
+      <div style={{marginBottom: '30px', position: 'relative', zIndex: '1'}} >
 
             <div className="animate__animated animate__fadeInUp post-full" >
               <div className="userName" >
@@ -176,25 +174,37 @@ export default class PostsTotal extends React.Component{
   //   const data = await res.json();
   //   this.setState({usuarios: data})
   // }
+  // https://sample-api-practice-node.herokuapp.com/usuarios
 
   fetchData = ()=>{
     if(JSON.stringify(this.state.users) === '[]'){
 
-        console.log("Estoy dentro del if");
-        fetch('https://sample-api-practice-node.herokuapp.com/usuarios')
-            .then( e=>{ console.log(e); if(e.status === 200){let data = e.json(); return data } } )
-            .then( users=>{ this.setState({users: users}); console.log(this.state); } )
+        console.log("Estoy dentro del if (fetchData in PostsTotal)");
+        fetch('http://192.168.1.6:3001/usuarios')
+            .then( e=>{ if(e.status === 200){let data = e.json(); return data } } )
+            .then( users=>{ this.setState({users: users}); this.spinner = {display: 'none'}; } )
 
-    }else{
+    }/*else{
       console.log("Estoy dentro del ELSE")
-    }
+    }asdfgh*/
+  }
+
+  spinner = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'fixed',
+    zIndex: '5'
   }
 
   render(){
     this.fetchData();
     return (
-      <div style={{marginBottom: '80px', marginTop: '30px'}} >
+      <div style={{marginBottom: '80px', marginTop: '80px', position: 'relative', zIndex: '1'}} >
 
+      <div style={this.spinner} id="spinnerWrapper" >
+        <div></div>
+      </div>
         {this.state.users.map( user=><Posteo usuario={user} /> )}
 
       </div>
