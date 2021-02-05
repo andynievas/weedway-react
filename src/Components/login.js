@@ -25,11 +25,6 @@ export default class Login extends React.Component{ // Se va a un Componente
     boxShadow: '0px 6px 60px -10px red'
   }
 
-  // subContainer = {
-  //   width: '80%',
-  //   margin: 'auto'
-  // }
-
   icon = {
     height: '42px',
     margin: '6px'
@@ -74,7 +69,7 @@ export default class Login extends React.Component{ // Se va a un Componente
     return (
 
       <div>
-        <div className="weedway" style={{ display: 'flex', width: '100%', justifyContent: 'center' }} id="weedway">
+        <div style={{ backgroundColor: 'rgb(30,30,30)', display: 'flex', width: '100%', justifyContent: 'center' }} id="weedway-title">
             <img style={ this.icon } src={ imgTitle } alt="«icon»" />
             <h2 style={{margin: '3px'}} >WeedWay</h2>
         </div>

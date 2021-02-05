@@ -1,8 +1,7 @@
 
 import React from 'react';
 
-
-class Options extends React.Component{
+export default class Options extends React.Component{
 
     containerStyle = {
         background: 'rgba(255,228,196,0.7)',
@@ -18,7 +17,6 @@ class Options extends React.Component{
         height: '230px',
         zIndex: '4'
     }
-
     closeButton = {
         fontSize: '26px',
         color: 'rgb(40,40,40)',
@@ -28,14 +26,9 @@ class Options extends React.Component{
         cursor: 'pointer'
     }
 
-    buttonStyle = {
-        display: 'block',
-        width: '100%'
-    }
-
     render(){
         return (
-            <div >
+            <div style={{position: 'fixed', left: '0', top: '0'}} >
                 <i className="fas fa-times " style={this.closeButton} onClick={ ()=>{this.props.setEstado(); } } ></i>
                 <div style={this.containerStyle} >
                     <button className="btn-block btn-options" >Dejar de seguir a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
@@ -47,5 +40,3 @@ class Options extends React.Component{
 
     }
 }
-
-export default Options;

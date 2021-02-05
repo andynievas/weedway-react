@@ -83,8 +83,8 @@ class App extends React.Component {
         <div className="App">
           <HeaderTitle estado={this.menuLateral.show} showMenu={this.showMenu} setEstado={this.changEstado} />
           <Modal estado={this.state.modal} setEstado={this.changEstado} view={this.textoModal} />
-
-          <PostsTotal />
+          <div style={{position: 'fixed', top: '80px', left: '0'}} >Fixed o khe</div>
+          <PostsTotal setEstado={this.changEstado} />
 
           <Footer setEstado={this.changEstado} />
         </div>

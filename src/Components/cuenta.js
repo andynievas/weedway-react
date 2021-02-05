@@ -45,7 +45,8 @@ class EditarDatos extends React.Component{
         }else {
             return (
                 <div >
-                    <form action="http://localhost:3001/comentar" method="POST" className="animate__animated animate__fadeInUp" style={{margin: '20px 0'}} onSubmit={this.onsubmit} id="changeUserName" autoComplete="off" >
+                    <form action="https://sample-api-practice-node.herokuapp.com/comentar" method="POST" className="animate__animated animate__fadeInUp" style={{margin: '20px 0'}} onSubmit={this.onsubmit} id="changeUserName" autoComplete="off" >
+                        <h4>Registrate como nuevo usuario</h4>
                         <button style={this.edit} onClick={ ()=>{this.props.setEstado(); } } >Cancelar</button>
                         <input type="text" name="username" onChange={this.onchange} placeholder="Username" />
                         <input type="submit" value="Guardar" style={{ backgroundColor: 'rgb(20,180,20)', color: 'white', cursor: 'pointer' }} />

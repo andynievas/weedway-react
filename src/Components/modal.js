@@ -1,10 +1,10 @@
 import React from 'react';
 import ModalBody from './modalbody';
 
-class Modal extends React.Component{
+export default class Modal extends React.Component{
 
     modalStyle = {
-        backgroundColor: 'rgb(30,30,30,0.5)',
+        backgroundColor: 'rgba(30,30,30,0)',
         backdropFilter: 'blur(6px)',
         color: 'white',
         position: 'fixed',
@@ -13,7 +13,7 @@ class Modal extends React.Component{
         left: '0px',
         right: '0px',
         width: 'auto',
-        zIndex: '1'
+        zIndex: '4'
     }
 
     first = 0;
@@ -26,11 +26,11 @@ class Modal extends React.Component{
             return 'none';
         }
         else if(this.props.estado){
-
-            document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
+          // alert("ocultar body")
+            document.getElementById("body").style = "overflow: hidden";
             return (entrance);
         }else{
-            document.getElementsByTagName('body')[0].style = 'overflow: auto;';
+            document.getElementById("body").style = "overflow: auto;";
             return (exit);
         }
     }
@@ -45,5 +45,3 @@ class Modal extends React.Component{
 
     }
 }
-
-export default Modal;

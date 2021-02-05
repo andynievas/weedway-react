@@ -5,6 +5,17 @@ import Cuenta from './cuenta';
 
 export default class MenuLateral extends React.Component{
 
+  fondoMenuLateral = {
+    display: 'block',
+    backgroundColor: 'rgba(10,10,10,0.6)',
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
+    height: '100vh',
+    zIndex: '4'
+  }
   estiloMenuLateral = {
     position: 'fixed',
     right: '0',
@@ -30,33 +41,41 @@ export default class MenuLateral extends React.Component{
 
   // first = 0;
   animation = ()=>{
-
     const entrance = "animate__animated animate__fadeInRight";
     const exit = "animate__animated animate__fadeOutRight";
-
-    if(this.props.first === 0){
-      return 'none';
-
-    }else if(this.props.estado){
+    if(this.props.estado){
       document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
       return entrance;
-
-    }else {
-      document.getElementsByTagName('body')[0].style = 'overflow: auto;';
-      return exit;
     }
+  }
+
+  cerrar = ()=>{
+    this.props.showMenu();
+
+    // var specifiedElement = document.getElementById("closeMenuLat");
+    // //I'm using "click" but it works with any event
+    // document.addEventListener('click', (event)=>{
+    //   var isClickInside = specifiedElement.contains(event.target);
+    //
+    //   if (!isClickInside) {
+    //     //the click was outside the specifiedElement, do something
+    //     this.props.showMenu();
+    //   }
+    // });
   }
 
   render(){
 
     return (
-      <div style={{ position: 'fixed', zIndex: '4'}}  id='menuLateral' >
+      <div style={this.fondoMenuLateral} onClick={()=>{this.cerrar() }} id='menuLateral' >
+      <div>Click en esta area deberia cerrar el menu</div>
 
           <div style={this.estiloMenuLateral} className={ this.animation() } >
 
               <div style={{margin: '20px'}} >
-                  <button style={this.botonCerrar} onClick={ ()=>{ this.props.showMenu(); }} >&times; Cerrar Menu</button>
-                  Hola soy el menu lateral que aparezco desde la derecha
+                  <button id="closeMenuLat" style={this.botonCerrar} onClick={ ()=>{ this.props.showMenu(); }} >&times; Cerrar</button>
+                    Hola soy el menu lateral que aparezco desde la derecha
+                  <button onClick={()=>{this.setState({viendo: true})}} >Cambiar el estado</button>
 
                   <Cuenta />
               </div>
@@ -66,5 +85,4 @@ export default class MenuLateral extends React.Component{
       </div>
     );
   }
-
 }

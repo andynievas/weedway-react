@@ -91,7 +91,6 @@ class Interaction extends React.Component {
         <div className="interaction-section" >
           <InteractionFav/>
           <i className="far fa-share interaction-button" ></i>
-          <p className="description" > <span>Usuario1</span> Este es mi primer post</p>
           {this.state.comments.map( e=> <p key={e.id} className="animate__animated animate__zoomIn description comentario" > { <span> {e.user} </span> } {e.comentario} </p> )}
             <form action="http://localhost:3001/comentar" method="POST" className="comentar " onSubmit={this.onsubmit} autoComplete="off" >
               <input type="text" className="comentario-text-input" name="comentario" onChange={this.onchange} placeholder="Escribe aquí tu comentario..." />
@@ -139,21 +138,38 @@ class Dropdown extends React.Component{
 
 class Posteo extends React.Component{
 
+  post = { /* Post completo osea el card clarito redondeado con los elementos */
+      borderRadius: '10px',
+      backgroundColor: 'bisque',
+      width: '97%', /* Minimo margen de pantalla para <500px */
+      maxWidth: '500px',
+      margin: 'auto',
+      padding: '1px'
+  }
+
+  userName = {
+    display: 'flex'
+  }
+
+  state = {options: false}
+
   render (){
     const userName = this.props.usuario.userName;
     const profilePhoto = this.props.usuario.profilePhoto;
     const userPost = this.props.usuario.userPost;
 
     return (
-      <div style={{marginBottom: '30px', position: 'relative', zIndex: '1'}} >
+      <div style={{marginBottom: '30px'}} >
+        <div style={{position: 'fixed', top: '100px', left: '0'}} >Fixed o khe</div>
 
-            <div className="animate__animated animate__fadeInUp post-full" >
-              <div className="userName" >
+            <div style={this.post} className="animate__animated animate__fadeInUp" >{/* Post completo osea el card clarito redondeado con los elementos */}
+              <div style={this.userName} >
                 <img className="fondo-negro user-photo" src={profilePhoto} alt="user-logo" />
                 <h3 className="user-title" style={{ cursor: 'pointer', width: 'calc(100% - 130px)' }} >{userName}</h3>
                 <Dropdown user={userName} />
               </div>
               <img className=" img-post fondo-negro" src={userPost} alt="img-posted" />
+              <p className="description" > <span>{userName}</span> Este es mi primer post</p>
               <Interaction/>
             </div>
 
@@ -180,34 +196,35 @@ export default class PostsTotal extends React.Component{
     if(JSON.stringify(this.state.users) === '[]'){
 
         console.log("Estoy dentro del if (fetchData in PostsTotal)");
-        fetch('http://192.168.1.6:3001/usuarios')
+        fetch('https://sample-api-practice-node.herokuapp.com/usuarios')
             .then( e=>{ if(e.status === 200){let data = e.json(); return data } } )
-            .then( users=>{ this.setState({users: users}); this.spinner = {display: 'none'}; } )
+            .then( users=>{ this.setState({users: users}); return true; /*document.getElementById("spinnerWrapper").style = "display: none;";*/ } )
 
-    }/*else{
+    }else{
       console.log("Estoy dentro del ELSE")
-    }asdfgh*/
-  }
-
-  spinner = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'fixed',
-    zIndex: '5'
+      return false;
+    }
   }
 
   render(){
-    this.fetchData();
-    return (
-      <div style={{marginBottom: '80px', marginTop: '80px', position: 'relative', zIndex: '1'}} >
+    if( this.fetchData() ){
+      return (
+        <div style={{marginBottom: '80px', marginTop: '80px', position: 'relative', zIndex: '1'}} >
 
-      <div style={this.spinner} id="spinnerWrapper" >
-        <div></div>
-      </div>
-        {this.state.users.map( user=><Posteo usuario={user} /> )}
+          <div style={{ display: 'flex' }} id="spinnerWrapper" >
+            <div></div>
+          </div>
 
-      </div>
-    );
+        </div>
+      );
+    }else{
+      return (
+        <div style={{marginBottom: '80px', marginTop: '80px', position: 'relative', zIndex: '1'}} >
+
+          {this.state.users.map( user=><Posteo usuario={user} /> )}
+
+        </div>
+      );
+    }
   }
 }

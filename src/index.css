@@ -16,24 +16,33 @@ body{
   /* spinnerWrapper */
   #spinnerWrapper{
     background: grey;
-    animation: rotate 2s;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    align-items: center;
+    justify-content: center;
     z-index: '5';
   }
   #spinnerWrapper div{
     width: 100px;
     height: 100px;
     background-color: white;
+    animation: rotate 4s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: linear;
   }
-  @@keyframes rotate {
+  div#spinnerWrapper.d-none{
+    display: none;
+  }
+  @keyframes rotate {
     from{
-      left: 30px;
+      transform: rotate(0deg);
     }
     to{
-      left: 300px;
+      transform: rotate(360deg);
     }
   }
 
@@ -70,10 +79,7 @@ body{
     display: inline-block;
     vertical-align: middle;
   }
-  .userName {
-    display: flex;
-    position: relative;
-  }
+
   .options{
     position: fixed;
     right: 16px;
@@ -98,8 +104,8 @@ body{
   /* background-color: rgb(30,30,30); */
   height: 58px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 #weedway-title h2{
   color: rgb(40,230,40);
@@ -217,14 +223,6 @@ body{
     background-color: rgba(255,228,196,0.6);
   }
 
-.post-full{
-    border-radius: 10px;
-    background-color: bisque;
-    width: 97%; /* Minimo margen de pantalla para <500px */
-    max-width: 500px;
-    margin: auto;
-    padding: 1px;
-}
 .img-post{
     width: 100%;
 }

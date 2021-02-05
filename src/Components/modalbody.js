@@ -23,7 +23,7 @@ class ModalBody extends React.Component{
         margin: 'auto',
         padding: '0 20px',
         color: 'rgb(220,220,220)',
-        backgroundColor: 'rgba(60,60,60,0.7)',
+        backgroundColor: 'rgba(220,220,220,1)',
         // backdropFilter: 'blur(0px)',
         borderRadius: '20px 20px 0 0',
         // marginTop: '70px',
@@ -82,11 +82,11 @@ class ModalBody extends React.Component{
                         <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
                     </div>
                 </div>
-                // <UserProfile nombre del usuario a visitar /> 
+                // <UserProfile nombre del usuario a visitar />
             );
         }
     }
-    
+
     render(){
         return (
             <div style={this.styles} >
