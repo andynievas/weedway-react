@@ -151,7 +151,9 @@ class Posteo extends React.Component{
     display: 'flex'
   }
 
-  state = {options: false}
+  // componentDidMount = ()=>{
+  //   alert("Close SpinnerWrapper")
+  // }
 
   render (){
     const userName = this.props.usuario.userName;
@@ -198,12 +200,13 @@ export default class PostsTotal extends React.Component{
         console.log("Estoy dentro del if (fetchData in PostsTotal)");
         fetch('https://sample-api-practice-node.herokuapp.com/usuarios')
             .then( e=>{ if(e.status === 200){let data = e.json(); return data } } )
-            .then( users=>{ this.setState({users: users}); return true; /*document.getElementById("spinnerWrapper").style = "display: none;";*/ } )
+            .then( users=>{ this.setState({users: users}); /*document.getElementById("spinnerWrapper").style = "display: none;";*/ } )
 
     }else{
       console.log("Estoy dentro del ELSE")
       return false;
     }
+    return true;
   }
 
   render(){

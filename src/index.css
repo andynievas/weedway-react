@@ -339,10 +339,10 @@ body{
   border: none;
   border-radius: 6px;
 }
-#loginForm div{
+#formToAtuh div{
   display: flex;
 }
-#loginForm div input{
+#formToAtuh div input{
   background-color: rgb(190, 60, 60);
   color: white;
   border: none;
@@ -353,7 +353,7 @@ body{
   padding-top: 10px;
   transition: all 0.3s;
 }
-#loginForm input:focus{
+#formToAtuh input:focus{
   color: white;
   background-color: rgb(190, 60, 60);
   box-shadow: 0px 0px 10px 0px red;
@@ -416,7 +416,7 @@ input#login-btn{
   margin: 30px auto;
   cursor: pointer;
   border-radius: 20px;
-  transition: all 0.6s;
+  /* transition: all 0.6s; */
 }
 input#login-btn:focus{
   border: 3px solid rgb(240, 70, 50);

@@ -6,9 +6,13 @@ import imgTitle from './weedway-icon.png';
 
 export default class Login extends React.Component{ // Se va a un Componente
 
+  // state = {
+  //   name: '',
+  //   password: ''
+  // }
+
   state = {
-    name: '',
-    password: ''
+    login: true
   }
 
   container = {
@@ -30,8 +34,12 @@ export default class Login extends React.Component{ // Se va a un Componente
     margin: '6px'
   }
 
+  data = {
+    name: '',
+    password: ''
+  }
   usernameStyle = ()=>{
-    if( this.state.name === "" ){
+    if( this.data.name === "" ){
       return ("username-label");
     }
     else{
@@ -39,7 +47,7 @@ export default class Login extends React.Component{ // Se va a un Componente
     }
   }
   passwordStyle = ()=>{
-    if( this.state.password === "" ){
+    if( this.data.password === "" ){
       return ("password-label");
     }
     else{
@@ -65,65 +73,74 @@ export default class Login extends React.Component{ // Se va a un Componente
     console.log(this.state)
   }
 
-  render(){
+  login = ()=>{
     return (
-
-      <div>
-        <div style={{ backgroundColor: 'rgb(30,30,30)', display: 'flex', width: '100%', justifyContent: 'center' }} id="weedway-title">
-            <img style={ this.icon } src={ imgTitle } alt="«icon»" />
-            <h2 style={{margin: '3px'}} >WeedWay</h2>
+      <form onSubmit={this.onsubmit} autoComplete="on" id="formToAtuh" >
+        <div style={{ position: 'relative', margin: '20px 30px' }} id='username' >
+          <input type='text' onChange={this.onchangeUser} autoComplete="on" id='username-login' />
+          <label htmlFor="username-login" className={ this.usernameStyle() } >Usuario</label>
         </div>
 
-        {/* <div style={{ height: 'calc( 100vh - 10px )', display: 'flex', justifyContent: 'center', alignItems: 'center' }} > */}
-          <div style={this.container} >
+        <div style={{ position: 'relative', margin: '20px 30px' }} id='password-user' >
+          <input type='password' onChange={this.onchangePass} id='password-login' />
+          <label htmlFor="password-login" className={ this.passwordStyle() } /*"password-label"*/ >Contraseña</label>
+        </div>
 
-            <h3 style={{margin: '10px', textAlign: 'center', fontSize: '34px'}} >Welcome to WeedWay</h3>
-            <p style={{margin: '0 0 30px 0', textAlign: 'center', fontSize: '20px'}} >Tu sitio favorito!</p>
+        <input type='submit' value='Log in' id="login-btn" />
+      </form>
+    );
+  }
 
-            <div style={this.subContainer} >
+  register = ()=>{
+    return (
+      <form onSubmit={this.onsubmit} autoComplete="on" id="formToAtuh" >
+        <input type="text" style={{display: 'block', width: '80%', margin: 'auto'}} />
+        <input type="text" style={{display: 'block', width: '80%', margin: 'auto'}} />
+        <input type="text" style={{display: 'block', width: '80%', margin: 'auto'}} />
+        <input type="text" style={{display: 'block', width: '80%', margin: 'auto'}} />
+        <input type="text" style={this.inputs} />
 
-              <form onSubmit={this.onsubmit} autoComplete="on" id="loginForm" >
+        <input type='submit' value='Register' onClick={ ()=>{alert("Registrado con exito")} } id="login-btn" />
+      </form>
+    );
+  }
 
-                <div style={{ position: 'relative', margin: '20px 30px' }} id='username' >
-                  <input type='text' style={this.inputs} onChange={this.onchangeUser} autoComplete="on" id='username-input' />
-                  <label htmlFor="username-input" className={ this.usernameStyle() } >Usuario</label>
-                </div>
+  render(){
+      return (
+        <div>
+          <div style={{ backgroundColor: 'rgb(30,30,30)', display: 'flex', width: '100%', justifyContent: 'center' }} id="weedway-title">
+              <img style={ this.icon } src={ imgTitle } alt="«icon»" />
+              <h2 style={{margin: '3px'}} >WeedWay</h2>
+          </div>
 
-                <div style={{ position: 'relative', margin: '20px 30px' }} id='password-user' >
-                  <input type='password' style={this.inputs} onChange={this.onchangePass} id='password-user-input' />
-                  <label htmlFor="password-user-input" className={ this.passwordStyle() } /*"password-label"*/ >Contraseña</label>
-                </div>
+            <div style={this.container} >
 
-                <input type='submit' value='Log in' onClick={ ()=>{} } id="login-btn" />
-              </form>
+              <h3 style={{margin: '10px', textAlign: 'center', fontSize: '34px'}} >Welcome to WeedWay</h3>
+              <p style={{margin: '0 0 30px 0', textAlign: 'center', fontSize: '20px'}} >Tu sitio favorito!</p>
+
+              <div style={this.subContainer} >
+                <button onClick={()=>{this.setState({login: !this.state.login}); }} >Register / Login</button>
+                {this.state.login ? this.login() : this.register()}
+              </div>
 
             </div>
 
+          <div className="allRightsReserved"
+            style={{
+              width: '100%',
+              height: '140px'
+            }} >
+
+            <h2>Todos los derechos reservados
+              <span style={{display: 'block', padding: '6px 0'}} >Developed By Andy Nievas</span>
+              <span style={{display: 'block', padding: '6px 0'}} >©2021</span>
+            </h2>
+
           </div>
-        {/* </div> */}
-
-        <div className="allRightsReserved"
-          style={{
-            width: '100%',
-            height: '140px'
-          }} >
-
-          <h2
-            // style={{
-            //   position: 'absolute',
-            //   bottom: '0'
-            // }}
-
-            >Todos los derechos reservados
-            <span style={{display: 'block', padding: '6px 0'}} >Developed By Andy Nievas</span>
-            <span style={{display: 'block', padding: '6px 0'}} >©2021</span>
-
-          </h2>
 
         </div>
 
-      </div>
+      );
 
-    );
   }
 }
