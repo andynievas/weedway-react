@@ -5,14 +5,14 @@ import React from 'react';
 class Mensaje extends React.Component{
 
     styles = {
-        fontSize: '20px',
-        fontWeight: 'bold'
+      color: 'red',
+      fontSize: '20px',
     }
 
     render(){
-        return (
-            <p> <span style={this.styles} > {this.props.userName} </span> {this.props.message} </p>
-        );
+      return (
+        <p style={this.styles} > <span style={{fontWeight: 'bold'}} > {this.props.userName} </span> {this.props.message} </p>
+      );
     }
 }
 
@@ -27,7 +27,7 @@ class Mensajes extends React.Component{
         padding: '0 14px',
         overflowY: 'auto' // Esta es la clave para la scrollbar
     }
-    
+
     render(){
         return (
             <div style={this.styles} >
@@ -48,7 +48,7 @@ class Mensajes extends React.Component{
                 <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
                 <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
                 <Mensaje userName='Andy98' message='Este es un mensaje de ejemplo' />
-                
+
             </div>
         );
     }

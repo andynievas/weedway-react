@@ -28,10 +28,22 @@ export default class Login extends React.Component{ // Se va a un Componente
     borderRadius: '20px',
     boxShadow: '0px 6px 60px -10px red'
   }
-
   icon = {
     height: '42px',
     margin: '6px'
+  }
+  loginBtn = {
+    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontSize: '16px',
+    border: '3px solid rgb(250, 180, 150)',
+    display: 'block',
+    width: '60%',
+    height: '40px',
+    minWidth: '150px',
+    margin: '30px auto',
+    cursor: 'pointer',
+    borderRadius: '20px'
   }
 
   data = {
@@ -75,55 +87,53 @@ export default class Login extends React.Component{ // Se va a un Componente
 
   login = ()=>{
     return (
-      <form onSubmit={this.onsubmit} autoComplete="on" id="formToAtuh" >
-        <div style={{ position: 'relative', margin: '20px 30px' }} id='username' >
-          <input type='text' onChange={this.onchangeUser} autoComplete="on" id='username-login' />
+      <div style={this.subContainer} >
+        <button onClick={()=>{this.setState({login: !this.state.login}); }} >Register</button>
+        <form onSubmit={this.onsubmit} autoComplete="on" id="formToAtuh" >
+          <input type='text' className="inputForm" onChange={this.onchangeUser} autoComplete="on" id='username-login' />
           <label htmlFor="username-login" className={ this.usernameStyle() } >Usuario</label>
-        </div>
 
-        <div style={{ position: 'relative', margin: '20px 30px' }} id='password-user' >
-          <input type='password' onChange={this.onchangePass} id='password-login' />
+          <input type='password' className="inputForm" onChange={this.onchangePass} id='password-login' />
           <label htmlFor="password-login" className={ this.passwordStyle() } /*"password-label"*/ >Contraseña</label>
-        </div>
 
-        <input type='submit' value='Log in' id="login-btn" />
-      </form>
+          <button type='submit' style={this.loginBtn} id="login-btn">Log in</button>
+        </form>
+      </div>
     );
   }
 
   register = ()=>{
     return (
-      <form onSubmit={this.onsubmit} autoComplete="on" id="formToAtuh" >
-        <input type="text" style={{display: 'block', width: '80%', margin: 'auto'}} />
-        <input type="text" style={{display: 'block', width: '80%', margin: 'auto'}} />
-        <input type="text" style={{display: 'block', width: '80%', margin: 'auto'}} />
-        <input type="text" style={{display: 'block', width: '80%', margin: 'auto'}} />
-        <input type="text" style={this.inputs} />
+      <div style={this.subContainer} >
+        <button onClick={()=>{this.setState({login: !this.state.login}); }} >Login</button>
+        <form onSubmit={this.onsubmit} autoComplete="on" id="formToAtuh" >
+          <input type="text" className="inputForm" />
+          <input type="text" className="inputForm" />
+          <input type="text" className="inputForm" />
+          <input type="text" className="inputForm" />
+          <input type="text" className="inputForm" />
 
-        <input type='submit' value='Register' onClick={ ()=>{alert("Registrado con exito")} } id="login-btn" />
-      </form>
+          <button type='submit' style={this.loginBtn} onClick={ ()=>{alert("Registrado con exito")} } id="login-btn" >Register</button>
+        </form>
+      </div>
+
     );
   }
 
   render(){
+    document.getElementById("body").style="height: 100vh";
       return (
-        <div>
+        <div style={{ height: '100vh', display: 'flex', flexDirection: 'column',  justifyContent: 'space-around'}} >
           <div style={{ backgroundColor: 'rgb(30,30,30)', display: 'flex', width: '100%', justifyContent: 'center' }} id="weedway-title">
               <img style={ this.icon } src={ imgTitle } alt="«icon»" />
               <h2 style={{margin: '3px'}} >WeedWay</h2>
           </div>
 
-            <div style={this.container} >
-
-              <h3 style={{margin: '10px', textAlign: 'center', fontSize: '34px'}} >Welcome to WeedWay</h3>
-              <p style={{margin: '0 0 30px 0', textAlign: 'center', fontSize: '20px'}} >Tu sitio favorito!</p>
-
-              <div style={this.subContainer} >
-                <button onClick={()=>{this.setState({login: !this.state.login}); }} >Register / Login</button>
-                {this.state.login ? this.login() : this.register()}
-              </div>
-
-            </div>
+          <div style={this.container} >
+            <h3 style={{margin: '10px', textAlign: 'center', fontSize: '34px'}} >Welcome to WeedWay</h3>
+            <p style={{margin: '0 0 30px 0', textAlign: 'center', fontSize: '20px'}} >Tu sitio favorito!</p>
+            {this.state.login ? this.login() : this.register()}
+          </div>
 
           <div className="allRightsReserved"
             style={{

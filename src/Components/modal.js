@@ -27,10 +27,8 @@ export default class Modal extends React.Component{
         }
         else if(this.props.estado){
           // alert("ocultar body")
-            document.getElementById("body").style = "overflow: hidden";
             return (entrance);
         }else{
-            document.getElementById("body").style = "overflow: auto;";
             return (exit);
         }
     }

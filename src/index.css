@@ -12,6 +12,9 @@ body{
     /* padding-bottom: 60px; */
     overflow: visible;
   }
+body.hidden{
+  overflow: hidden;
+}
 
   /* spinnerWrapper */
   #spinnerWrapper{
@@ -339,21 +342,22 @@ body{
   border: none;
   border-radius: 6px;
 }
-#formToAtuh div{
-  display: flex;
+#formToAtuh{
+  position: relative;
 }
-#formToAtuh div input{
+input.inputForm{
   background-color: rgb(190, 60, 60);
   color: white;
   border: none;
   border-radius: 2rem;
+  margin: 5px 20px;
   padding: 0px 20px;
-  width: 100%;
+  width: calc(100% - 80px);
   height: 40px;
   padding-top: 10px;
   transition: all 0.3s;
 }
-#formToAtuh input:focus{
+input.inputForm:focus{
   color: white;
   background-color: rgb(190, 60, 60);
   box-shadow: 0px 0px 10px 0px red;
@@ -404,31 +408,17 @@ body{
   color: white;
 }
 
-input#login-btn{
-  color: white;
-  background-color: rgba(0,0,0,0);
-  font-size: 16px;
-  border: 3px solid rgb(250, 180, 150);
-  display: block;
-  width: 60%;
-  height: 40px;
-  min-width: 150px;
-  margin: 30px auto;
-  cursor: pointer;
-  border-radius: 20px;
-  /* transition: all 0.6s; */
-}
 input#login-btn:focus{
   border: 3px solid rgb(240, 70, 50);
 }
-.profile-posts{
+/* .profile-posts{
   display: flex;
-}
+} */
 .profile-posts img{
   background-color: grey;
-  width: 100px;
-  height: 100px;
-  margin: 2px;
+  width: 27.3%;
+  /* height: 100px; */
+  margin: 3%;
 }
 
 /* Change autocomplete styles in WebKit */
@@ -469,9 +459,9 @@ input:-webkit-autofill:focus{
 }
 
 /* LOGIN */
-@media screen and (min-height: 660px){
+/* @media screen and (min-height: 800px){
   .allRightsReserved{
     position: absolute;
     bottom: 0;
   }
-}
+} */

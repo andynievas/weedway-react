@@ -113,7 +113,7 @@ class Dropdown extends React.Component{
 
     render(){
       if(this.state.show){
-        document.getElementsByTagName('body')[0].style = "overflow: hidden;";
+        // document.getElementById('body').classList = "overflow: hidden;";
 
         return (
           <Options
@@ -123,7 +123,6 @@ class Dropdown extends React.Component{
           />
         );
       }else{
-        document.getElementsByTagName('body')[0].style = "overflow: auto;";
         return (
           <div>
             <i className="fas fa-ellipsis-h options" onClick={ ()=>{this.setState({show: !this.state.show})} } ></i>
@@ -162,12 +161,12 @@ class Posteo extends React.Component{
 
     return (
       <div style={{marginBottom: '30px'}} >
-        <div style={{position: 'fixed', top: '100px', left: '0'}} >Fixed o khe</div>
+        <div style={{position: 'fixed', top: '100px', left: '0'}} >{userName}</div>
 
             <div style={this.post} className="animate__animated animate__fadeInUp" >{/* Post completo osea el card clarito redondeado con los elementos */}
               <div style={this.userName} >
                 <img className="fondo-negro user-photo" src={profilePhoto} alt="user-logo" />
-                <h3 className="user-title" style={{ cursor: 'pointer', width: 'calc(100% - 130px)' }} >{userName}</h3>
+                <h3 className="user-title" onClick={()=>{this.props.setEstado(userName) }} style={{ cursor: 'pointer', width: 'calc(100% - 130px)' }} >{userName}</h3>
                 <Dropdown user={userName} />
               </div>
               <img className=" img-post fondo-negro" src={userPost} alt="img-posted" />
@@ -200,7 +199,7 @@ export default class PostsTotal extends React.Component{
         console.log("Estoy dentro del if (fetchData in PostsTotal)");
         fetch('https://sample-api-practice-node.herokuapp.com/usuarios')
             .then( e=>{ if(e.status === 200){let data = e.json(); return data } } )
-            .then( users=>{ this.setState({users: users}); /*document.getElementById("spinnerWrapper").style = "display: none;";*/ } )
+            .then( users=>{ this.setState({users: users}); } )
 
     }else{
       console.log("Estoy dentro del ELSE")
@@ -224,7 +223,7 @@ export default class PostsTotal extends React.Component{
       return (
         <div style={{marginBottom: '80px', marginTop: '80px', position: 'relative', zIndex: '1'}} >
 
-          {this.state.users.map( user=><Posteo usuario={user} /> )}
+          {this.state.users.map( user=><Posteo setEstado={this.props.setEstado} usuario={user} /> )}
 
         </div>
       );

@@ -6,7 +6,7 @@ import Cuenta from './cuenta';
 export default class MenuLateral extends React.Component{
 
   fondoMenuLateral = {
-    display: 'block',
+    display: 'flex',
     backgroundColor: 'rgba(10,10,10,0.6)',
     position: 'fixed',
     top: '0',
@@ -25,8 +25,8 @@ export default class MenuLateral extends React.Component{
     height: '100vh',
     minWidth: '300px',
     maxWidth: '500px',
+    padding: '20px',
     backgroundColor: 'rgb(30,30,30)',
-  //   backdropFilter: 'blur(40px)',
     boxShadow: '0px 0px 16px 10px rgb(20,20,20)',
     overflowY: 'auto',
     zIndex: '5'
@@ -67,18 +67,18 @@ export default class MenuLateral extends React.Component{
   render(){
 
     return (
-      <div style={this.fondoMenuLateral} onClick={()=>{this.cerrar() }} id='menuLateral' >
-      <div>Click en esta area deberia cerrar el menu</div>
+      <div style={this.fondoMenuLateral} id='menuLateral' >
+        <div onClick={()=>{ this.cerrar() }} >Click en esta area deberia cerrar el menu</div>
 
           <div style={this.estiloMenuLateral} className={ this.animation() } >
 
-              <div style={{margin: '20px'}} >
+              {/*<div style={{margin: '20px'}} >*/}
                   <button id="closeMenuLat" style={this.botonCerrar} onClick={ ()=>{ this.props.showMenu(); }} >&times; Cerrar</button>
                     Hola soy el menu lateral que aparezco desde la derecha
                   <button onClick={()=>{this.setState({viendo: true})}} >Cambiar el estado</button>
 
                   <Cuenta />
-              </div>
+              {/*</div>*/}
 
           </div>
 

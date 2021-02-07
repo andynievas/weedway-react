@@ -22,7 +22,7 @@ class ModalBody extends React.Component{
     styles = {
         margin: 'auto',
         padding: '0 20px',
-        color: 'rgb(220,220,220)',
+        color: 'rgb(120,120,120)',
         backgroundColor: 'rgba(220,220,220,1)',
         // backdropFilter: 'blur(0px)',
         borderRadius: '20px 20px 0 0',
@@ -43,7 +43,7 @@ class ModalBody extends React.Component{
         fontSize: '28px'
     }
 
-    view(){
+    view = ()=>{
         if (this.props.view === 'Buscar'){
             return (
                 <Buscar />
@@ -80,6 +80,11 @@ class ModalBody extends React.Component{
                         <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
                         <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
                         <img src="https://thispersondoesnotexist.com/image" alt="profile-pic" />
+                    </div>
+                    <div style={{width: '200px', border: '3px blue solid'}} >
+                      <div style={{width: 'auto', border: '2px red solid', margin: '10%'}} >
+                        asdfgh
+                      </div>
                     </div>
                 </div>
                 // <UserProfile nombre del usuario a visitar />
