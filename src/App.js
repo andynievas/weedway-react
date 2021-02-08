@@ -26,14 +26,14 @@ class App extends React.Component {
 
   changEstado = (texto) => {
     this.textoModal = texto;
-    if( this.state.modal ){
-      let body = document.getElementById("body");
-      console.log(body)
-      body.classList.add("hidden");
-    }else{
-      let body = document.getElementById("body");
-      body.classList.add("hidden");
-    }
+    // if( this.state.modal ){
+    //   let body = document.getElementById("body");
+    //   console.log(body)
+    //   body.classList.add("hidden");
+    // }else{
+    //   let body = document.getElementById("body");
+    //   body.classList.add("hidden");
+    // }
 
     this.setState({modal: !this.state.modal});
   }

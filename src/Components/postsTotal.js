@@ -1,8 +1,7 @@
 
 import React from 'react';
+
 import Options from './post-options';
-
-
 class InteractionFav extends React.Component{
 
     state = {
@@ -103,32 +102,10 @@ class Interaction extends React.Component {
 
 class Dropdown extends React.Component{
 
-    state={
-      show: false
-    }
-
-    changEstado = () => {
-      this.setState({show: !this.state.show});
-    }
-
     render(){
-      if(this.state.show){
-        // document.getElementById('body').classList = "overflow: hidden;";
-
-        return (
-          <Options
-            estado={this.state.show}
-            setEstado={this.changEstado}
-            user={this.props.user}
-          />
-        );
-      }else{
-        return (
-          <div>
-            <i className="fas fa-ellipsis-h options" onClick={ ()=>{this.setState({show: !this.state.show})} } ></i>
-          </div>
-        );
-      }
+      return (
+        <Options user={this.props.user} options={this.props.options} />
+      );
     }
   }
 
@@ -146,10 +123,6 @@ class Posteo extends React.Component{
       padding: '1px'
   }
 
-  userName = {
-    display: 'flex'
-  }
-
   // componentDidMount = ()=>{
   //   alert("Close SpinnerWrapper")
   // }
@@ -161,13 +134,15 @@ class Posteo extends React.Component{
 
     return (
       <div style={{marginBottom: '30px'}} >
-        <div style={{position: 'fixed', top: '100px', left: '0'}} >{userName}</div>
 
             <div style={this.post} className="animate__animated animate__fadeInUp" >{/* Post completo osea el card clarito redondeado con los elementos */}
-              <div style={this.userName} >
+              <div style={ {display: 'flex'} } >
                 <img className="fondo-negro user-photo" src={profilePhoto} alt="user-logo" />
                 <h3 className="user-title" onClick={()=>{this.props.setEstado(userName) }} style={{ cursor: 'pointer', width: 'calc(100% - 130px)' }} >{userName}</h3>
-                <Dropdown user={userName} />
+
+                <i className="fas fa-ellipsis-h options" onClick={ ()=>{this.props.options(userName) } } ></i>
+
+                {/*<Dropdown user={userName} />*/}
               </div>
               <img className=" img-post fondo-negro" src={userPost} alt="img-posted" />
               <p className="description" > <span>{userName}</span> Este es mi primer post</p>
@@ -180,11 +155,19 @@ class Posteo extends React.Component{
 
 }
 
+// function OptionsList(props){
+//   return (
+//     <div onClick={()=>{ props.setEstado(); } } style={{ position: 'fixed', zIndex: '4'}} > Fixed options </div>
+//   );
+// }
+
 export default class PostsTotal extends React.Component{
 
   state = {
+    options: false,
     users: []
   }
+  userName = ""
 
   // async componentDidMount(){
   //   const res = await fetch('http://sample-api-practice-node.herokuapp.com/usuarios')
@@ -202,10 +185,25 @@ export default class PostsTotal extends React.Component{
             .then( users=>{ this.setState({users: users}); } )
 
     }else{
-      console.log("Estoy dentro del ELSE")
       return false;
     }
     return true;
+  }
+
+  componentDidUpdate = ()=>{ /* Quita el scroll para el body cuando se muestra el menuLateral */
+    if(this.state.options){
+      document.getElementById('body').style = 'overflow: hidden;';
+    }else{
+      document.getElementById('body').style = 'overflow: auto;';
+    }
+  }
+
+  toggleOptions = (user)=>{
+    this.userName = user;
+
+    this.setState({
+      options: !this.state.options
+    })
   }
 
   render(){
@@ -221,9 +219,11 @@ export default class PostsTotal extends React.Component{
       );
     }else{
       return (
-        <div style={{marginBottom: '80px', marginTop: '80px', position: 'relative', zIndex: '1'}} >
+        <div style={{marginBottom: '80px', marginTop: '80px', position: 'relative', zIndex: '2'}} >
 
-          {this.state.users.map( user=><Posteo setEstado={this.props.setEstado} usuario={user} /> )}
+          {this.state.options ? <Dropdown user={this.userName} options={this.toggleOptions} /> : null}
+
+          {this.state.users.map( user=><Posteo setEstado={this.props.setEstado} options={this.toggleOptions} usuario={user} /> )}
 
         </div>
       );

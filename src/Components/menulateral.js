@@ -32,56 +32,27 @@ export default class MenuLateral extends React.Component{
     zIndex: '5'
   }
   botonCerrar = {
-      display: 'block',
-      width: '100%',
-      backgroundColor: 'red',
-      fontSize: '30px',
-      borderRadius: '2rem'
+    display: 'block',
+    width: '100%',
+    backgroundColor: 'red',
+    fontSize: '30px',
+    borderRadius: '2rem'
   }
 
-  // first = 0;
-  animation = ()=>{
-    const entrance = "animate__animated animate__fadeInRight";
-    const exit = "animate__animated animate__fadeOutRight";
-    if(this.props.estado){
-      document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
-      return entrance;
-    }
-  }
-
-  cerrar = ()=>{
-    this.props.showMenu();
-
-    // var specifiedElement = document.getElementById("closeMenuLat");
-    // //I'm using "click" but it works with any event
-    // document.addEventListener('click', (event)=>{
-    //   var isClickInside = specifiedElement.contains(event.target);
-    //
-    //   if (!isClickInside) {
-    //     //the click was outside the specifiedElement, do something
-    //     this.props.showMenu();
-    //   }
-    // });
-  }
+  //   const entrance = "animate__animated animate__fadeInRight";
+  //   const exit = "animate__animated animate__fadeOutRight";
 
   render(){
 
     return (
       <div style={this.fondoMenuLateral} id='menuLateral' >
-        <div onClick={()=>{ this.cerrar() }} >Click en esta area deberia cerrar el menu</div>
+        <div onClick={ ()=>{ this.props.showMenu(); }} style={{ width: '100%' }} ></div>
 
-          <div style={this.estiloMenuLateral} className={ this.animation() } >
-
-              {/*<div style={{margin: '20px'}} >*/}
-                  <button id="closeMenuLat" style={this.botonCerrar} onClick={ ()=>{ this.props.showMenu(); }} >&times; Cerrar</button>
-                    Hola soy el menu lateral que aparezco desde la derecha
-                  <button onClick={()=>{this.setState({viendo: true})}} >Cambiar el estado</button>
-
-                  <Cuenta />
-              {/*</div>*/}
-
-          </div>
-
+        <div style={this.estiloMenuLateral} className="animate__animated animate__fadeInRight" >
+          <button id="closeMenuLat" style={this.botonCerrar} onClick={ ()=>{ this.props.showMenu(); }} >&times; Cerrar</button>
+            Hola soy el menu lateral que aparezco desde la derecha
+          <Cuenta />
+        </div>
       </div>
     );
   }
