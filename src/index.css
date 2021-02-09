@@ -12,9 +12,6 @@ body{
     /* padding-bottom: 60px; */
     overflow: visible;
   }
-body.hidden{
-  overflow: hidden;
-}
 
   /* spinnerWrapper */
   #spinnerWrapper{
@@ -52,7 +49,6 @@ body.hidden{
   button{
     display: block;
     width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
     font-size: 20px;
@@ -67,10 +63,11 @@ body.hidden{
     outline: none;
     box-shadow: 0px 0px 12px 1px grey;
   }
+  input{
+    border-radius: 5px;
+  }
   input:focus{
     outline: none;
-    border-radius: 5px;
-    /* box-shadow: 0px 0px 12px 1px grey; */
   }
 
   .title{
@@ -343,75 +340,78 @@ body.hidden{
   border: none;
   border-radius: 6px;
 }
-#formToAtuh{
-  position: relative;
+#formToAuth{
+  /* position: relative; */
+  padding: 0 30px;
+}
+/* rgb(190, 60, 60) */
+
+/* label.label-input-login{ */
+label.label-input-login{
+  color: white;
+  background-color: tomato;
+  padding: 0 10px;
+  position: absolute;
+  top: -5px;
+  left: 30px;
+  transition: all 0.1s;
+  z-index: 1;
+}
+input.inputForm[value=""]{
+  border: 2px black solid;
 }
 input.inputForm{
-  background-color: rgb(190, 60, 60);
+  background-color: transparent;
   color: white;
-  border: none;
-  border-radius: 2rem;
-  margin: 5px 20px;
+  border: 2px white solid;
+  margin: 5px 0px;
   padding: 0px 20px;
-  width: calc(100% - 80px);
-  height: 40px;
-  padding-top: 10px;
+  width: calc(100% - 44px);
+  height: 50px;
   transition: all 0.3s;
+  z-index: 3;
 }
 input.inputForm:focus{
-  color: white;
-  background-color: rgb(190, 60, 60);
-  box-shadow: 0px 0px 10px 0px red;
+  border: 2px white solid;
 }
-.username-label{
-  color: rgb(250,210,210);
+input.inputForm[value=""] ~ label.label-input-login{
+  top: 15px;
+  color: white;
   font-size: 24px;
-  position: absolute;
-  top: 9px;
-  left: 20px;
-  transition: all 0.1s;
+  cursor: text;
 }
-.password-label{
-  color: rgb(250,210,210);
-  font-size: 24px;
-  position: absolute;
-  top: 9px;
-  left: 20px;
-  transition: all 0.1s;
+input.inputForm:focus ~ label.label-input-login{
+  top: -5px;
+  padding: 0 10px;
+  color: white;
+  font-size: 16px;
 }
 
-#username input:focus ~ .username-label{
-  position: absolute;
-  top: 2px;
-  font-size: 14px;
+/* #password-login:focus ~ label.label-input-login{
+  top: -5px;
+  padding: 0 10px;
   color: white;
+  font-size: 16px;
+} */
+
+button#login-btn{
+  color: white;
+  background-color: rgba(0,0,0,0);
+  font-size: 16px;
+  border: 3px solid rgb(250, 180, 150);
+  display: block;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+button#login-btn:hover{
+  border: 3px solid rgb(200, 70, 50);
+  box-shadow: 0px 0px 30px 10px rgb(200, 70, 50) inset;
+}
+#forgotPass:hover{
+  text-decoration: underline;
 }
 
-#password-user input:focus ~ .password-label{
-  position: absolute;
-  top: 2px;
-  font-size: 14px;
-  color: white;
-}
-
-.username-label-focused{
-  position: absolute;
-  top: 2px;
-  left: 20px;
-  font-size: 14px;
-  color: white;
-}
-.password-label-focused{
-  position: absolute;
-  top: 2px;
-  left: 20px;
-  font-size: 14px;
-  color: white;
-}
-
-input#login-btn:focus{
-  border: 3px solid rgb(240, 70, 50);
-}
 .profile-posts{
   display: flex;
   justify-content: space-around;
@@ -462,6 +462,21 @@ input:-webkit-autofill:focus{
 }
 
 /* LOGIN */
+#swapSession{
+  color: rgb(250,250,190);
+  background-color: rgba(190,60,60,0.3);
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  margin-right: 10px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+#swapSession:hover{
+  background-color: rgb(190,60,60);
+}
 /* @media screen and (min-height: 800px){
   .allRightsReserved{
     position: absolute;

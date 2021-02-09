@@ -4,21 +4,122 @@ import React from 'react';
 // Static Files
 import imgTitle from './weedway-icon.png';
 
-export default class Login extends React.Component{ // Se va a un Componente
+class LoginForm extends React.Component{
 
-  // state = {
-  //   name: '',
-  //   password: ''
-  // }
+  state = {
+    name: "",
+    password: ""
+  }
+
+  onchangeUser = e => {
+    // console.log(e.target);
+    this.setState( { name: e.target.value } );
+  }
+  onchangePass = e => {
+    // console.log(e.target);
+    this.setState( { password: e.target.value } );
+  }
+  onsubmit = e => {
+    // e.preventDefault();
+    if( this.state.name !== '' ){
+      localStorage.setItem('weedway-user', this.state.name);
+    }else{
+      e.preventDefault();
+      alert("Usuario vacío")
+      // document.
+    }
+    //e.target[0].value = ''; // e.target[0] es el input correspondiente al post
+  }
+
+  render(){
+    return (
+      <div className="animate__animated animate__fadeInUp" >
+
+        <form onSubmit={this.onsubmit} autoComplete="on" id="formToAuth" >
+          <div style={{position: 'relative', margin: '10px 0'}} >
+            <input type='text' className="inputForm" value={this.state.name} onChange={this.onchangeUser} autoComplete="on" id='username-login' />
+            <label htmlFor="username-login" className="label-input-login" >Usuario</label>
+          </div>
+
+          <div style={{position: 'relative', margin: '10px 0'}} >
+            <input type='password' className="inputForm" value={this.state.password} onChange={this.onchangePass} id='password-login' />
+            <label htmlFor="password-login" className="label-input-login" /*"password-label"*/ >Contraseña</label>
+          </div>
+
+          <span style={{cursor: 'pointer'}} id="forgotPass" >Forgot password</span>
+          <div style={{display: 'flex', margin: '20px'}} >
+            <p id="swapSession" onClick={ ()=>{ this.props.cambiarEstado() } } >Crear cuenta</p>
+            <button id="login-btn">Log in</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+}
+
+class RegisterForm extends React.Component{
+
+  onsubmit = e => {
+    // e.preventDefault();
+    if( this.state.name !== '' ){
+      localStorage.setItem('weedway-user', this.data.name);
+    }else{
+      e.preventDefault();
+      alert("Usuario vacío")
+      // document.
+    }
+    //e.target[0].value = ''; // e.target[0] es el input correspondiente al post
+  }
+
+  render(){
+    return (
+      <div className="animate__animated animate__fadeInUp" >
+
+        <form
+        onSubmit={this.onsubmit}
+        autoComplete="on" id="formToAuth" >
+
+          <div style={{position: 'relative', margin: '10px 0'}} >
+            <input type="text" className="inputForm" id="username-register" value="" />
+            <label htmlFor="username-register" className="label-input-login" >Nombre de usuario</label>
+          </div>
+
+          <div style={{position: 'relative', margin: '10px 0'}} >
+            <input type="text" className="inputForm" placeholder="Correo" value="" />
+            <label htmlFor="username-register" className="label-input-login" >Nombre de usuario</label>
+          </div>
+
+          <div style={{position: 'relative', margin: '10px 0'}} >
+            <input type="text" className="inputForm" placeholder="Nueva contraseña" value="" />
+            <label htmlFor="username-register" className="label-input-login" >Nombre de usuario</label>
+          </div>
+
+          <div style={{position: 'relative', margin: '10px 0'}} >
+            <input type="text" className="inputForm" placeholder="Confirmar contraseña" value="" />
+            <label htmlFor="username-register" className="label-input-login" >Nombre de usuario</label>
+          </div>
+
+          <div style={{display: 'flex', margin: '20px'}} >
+            <button id="swapSession" onClick={ ()=>{ this.props.cambiarEstado() } } >Prefiero iniciar sesión</button>
+            <button type='submit' onClick={ ()=>{alert("Registrado con exito")} } id="login-btn" >Register</button>
+          </div>
+        </form>
+
+      </div>
+    );
+  }
+}
+
+export default class Login extends React.Component{
 
   state = {
     login: true
   }
 
   container = {
-    width: '80%',
+    width: '96%',
     maxWidth: '600px',
-    margin: '10vh auto',
+    margin: '70px auto',
     color: 'rgb(250,250,190)',
     background: 'tomato',
     borderTop: '1px rgb(250,50,70) solid',
@@ -32,98 +133,15 @@ export default class Login extends React.Component{ // Se va a un Componente
     height: '42px',
     margin: '6px'
   }
-  loginBtn = {
-    color: 'white',
-    backgroundColor: 'rgba(0,0,0,0)',
-    fontSize: '16px',
-    border: '3px solid rgb(250, 180, 150)',
-    display: 'block',
-    width: '60%',
-    height: '40px',
-    minWidth: '150px',
-    margin: '30px auto',
-    cursor: 'pointer',
-    borderRadius: '20px'
-  }
 
-  data = {
-    name: '',
-    password: ''
-  }
-  usernameStyle = ()=>{
-    if( this.data.name === "" ){
-      return ("username-label");
-    }
-    else{
-      return("username-label-focused");
-    }
-  }
-  passwordStyle = ()=>{
-    if( this.data.password === "" ){
-      return ("password-label");
-    }
-    else{
-      return("password-label-focused");
-    }
-  }
-
-  onchangeUser = e => {
-    // console.log(e.target);
-    this.setState( { name: e.target.value, password: this.state.password } );
-  }
-  onchangePass = e => {
-    // console.log(e.target);
-    this.setState( { name: this.state.name, password: e.target.value } );
-  }
-
-  onsubmit = e => {
-    // e.preventDefault();
-    if( this.state.name !== '' ){
-      localStorage.setItem('weedway-user', this.state.name);
-    }
-    //e.target[0].value = ''; // e.target[0] es el input correspondiente al post
-    console.log(this.state)
-  }
-
-  login = ()=>{
-    return (
-      <div style={this.subContainer} >
-        <button onClick={()=>{this.setState({login: !this.state.login}); }} >Register</button>
-        <form onSubmit={this.onsubmit} autoComplete="on" id="formToAtuh" >
-          <input type='text' className="inputForm" onChange={this.onchangeUser} autoComplete="on" id='username-login' />
-          <label htmlFor="username-login" className={ this.usernameStyle() } >Usuario</label>
-
-          <input type='password' className="inputForm" onChange={this.onchangePass} id='password-login' />
-          <label htmlFor="password-login" className={ this.passwordStyle() } /*"password-label"*/ >Contraseña</label>
-
-          <button type='submit' style={this.loginBtn} id="login-btn">Log in</button>
-        </form>
-      </div>
-    );
-  }
-
-  register = ()=>{
-    return (
-      <div style={this.subContainer} >
-        <button onClick={()=>{this.setState({login: !this.state.login}); }} >Login</button>
-        <form onSubmit={this.onsubmit} autoComplete="on" id="formToAtuh" >
-          <input type="text" className="inputForm" />
-          <input type="text" className="inputForm" />
-          <input type="text" className="inputForm" />
-          <input type="text" className="inputForm" />
-          <input type="text" className="inputForm" />
-
-          <button type='submit' style={this.loginBtn} onClick={ ()=>{alert("Registrado con exito")} } id="login-btn" >Register</button>
-        </form>
-      </div>
-
-    );
+  cambiarEstado = ()=>{
+    this.setState({login: !this.state.login});
   }
 
   render(){
-    document.getElementById("body").style="height: 100vh";
+    document.getElementById("body").style="min-height: 100vh";
       return (
-        <div style={{ height: '100vh', display: 'flex', flexDirection: 'column',  justifyContent: 'space-around'}} >
+        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column',  justifyContent: 'space-between'}} >
           <div style={{ backgroundColor: 'rgb(30,30,30)', display: 'flex', width: '100%', justifyContent: 'center' }} id="weedway-title">
               <img style={ this.icon } src={ imgTitle } alt="«icon»" />
               <h2 style={{margin: '3px'}} >WeedWay</h2>
@@ -131,17 +149,14 @@ export default class Login extends React.Component{ // Se va a un Componente
 
           <div style={this.container} >
             <h3 style={{margin: '10px', textAlign: 'center', fontSize: '34px'}} >Welcome to WeedWay</h3>
-            <p style={{margin: '0 0 30px 0', textAlign: 'center', fontSize: '20px'}} >Tu sitio favorito!</p>
-            {this.state.login ? this.login() : this.register()}
+            <p style={{margin: '0 0 10px 0', textAlign: 'center', fontSize: '20px'}} >Tu sitio favorito!</p>
+            {this.state.login ? <LoginForm cambiarEstado={this.cambiarEstado} /> : <RegisterForm cambiarEstado={this.cambiarEstado} />}
           </div>
 
-          <div className="allRightsReserved"
-            style={{
-              width: '100%',
-              height: '140px'
-            }} >
+          <div className="allRightsReserved" style={{width: '100%'}} >
 
-            <h2>Todos los derechos reservados
+            <h2 style={{padding: '30px 0'}} >
+              <span style={{display: 'block', padding: '6px 0'}} >Todos los derechos reservados</span>
               <span style={{display: 'block', padding: '6px 0'}} >Developed By Andy Nievas</span>
               <span style={{display: 'block', padding: '6px 0'}} >©2021</span>
             </h2>

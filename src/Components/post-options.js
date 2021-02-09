@@ -26,8 +26,8 @@ export default class Options extends React.Component{
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: '20px',
-        height: '230px',
+        borderRadius: '20px'
+
     }
     closeButton = {
         fontSize: '26px',
@@ -43,9 +43,9 @@ export default class Options extends React.Component{
             <div style={this.fondo} >
                 <div className="animate__animated animate__fadeInUp" style={this.containerStyle} >
                     <i className="fas fa-times " style={this.closeButton} onClick={ ()=>{this.props.options(); } } ></i>
-                    <button className="btn-block btn-options" >Dejar de seguir a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
-                    <button className="btn-block btn-options" >Compartir publicación de <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
-                    <button className="btn-block btn-options" >Reportar a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
+                    <button style={{height: '10vh', minHeight: '50px'}} className="btn-options" >Dejar de seguir a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
+                    <button style={{height: '10vh', minHeight: '50px'}} className="btn-options" >Compartir publicación de <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
+                    <button style={{height: '10vh', minHeight: '50px'}} className="btn-options" >Reportar a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>
                 </div>
             </div>
         );
