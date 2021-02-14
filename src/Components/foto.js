@@ -6,8 +6,7 @@ export default class Foto extends React.Component{
 
     inputFile = {
         border: '4px dashed grey',
-        display: 'inline-block',
-        width: 'calc(100% - 80px)',
+        display: 'block',
         padding: '40px',
         cursor: 'pointer',
         fontSize: '30px',
@@ -19,9 +18,6 @@ export default class Foto extends React.Component{
         console.log( file.value );
         console.log( file.files );
 
-
-        alert( file.value );
-        alert( file.files[0] );
         // return (
         //     <img src={ file } alt="fileUpload" />
         // );
@@ -30,16 +26,16 @@ export default class Foto extends React.Component{
     render(){
         return (
             <form>
-                <p>Hola elige una FOTO para subir</p>
+                <h4 style={{margin: '20px 0'}} >Elige una foto para subir</h4>
                 <input id="inputFile" type="file" style={{ display: 'none' }} />
                 <label
-                    for="inputFile"
+                    htmlFor="inputFile"
                     style={this.inputFile}
                     // onChange={ ()=>{ this.selected(); console.log('anduuu'); }}
                     // onInput={ ()=>{ this.selected(); console.log('anduuu'); }}
                     onClick={ ()=>{ this.selected(); console.log('anduuu'); }}
                 > Select an image to upload </label>
-                <input type="button" value="Listo" />
+                <button style={{marginTop: '20px', color: 'white'}} onClick={ (e)=>{ e.preventDefault() ; alert("No funciona todavía")} } >Publicar</button>
             </form>
         );
     }

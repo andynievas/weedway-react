@@ -6,7 +6,7 @@ export default class Lugares extends React.Component{
     
     render(){
         return (
-            <p>Hola elige un LUGAR para comprar faso</p>
+            <h3>En esta sección se mostrarían tiendas asociadas y tal vez un mapa</h3>
         );
     }
 }

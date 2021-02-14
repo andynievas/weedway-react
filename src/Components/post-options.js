@@ -6,6 +6,7 @@ import React from 'react';
 export default class Options extends React.Component{
 
     fondo = {
+      backgroundColor: 'rgba(20,20,20,0.8)',
       position: 'fixed',
       top: '0',
       left: '0',
@@ -14,11 +15,10 @@ export default class Options extends React.Component{
       display: 'flex',
       alignItems: 'center',
       padding: '20px',
-      backgroundColor: 'rgba(30,30,30,0.8)',
-      zIndex: '4'
+      zIndex: '1'
     }
     containerStyle = {
-        background: 'rgba(0,0,0,0.4)',
+        background: 'rgba(0,0,0,0.7)',
         maxWidth: '500px',
         margin: 'auto',
         padding: '10px',
@@ -26,8 +26,12 @@ export default class Options extends React.Component{
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: '20px'
-
+        borderRadius: '20px',
+        position: 'fixed',
+        top: '20%',
+        left: '0',
+        right: '0',
+        zIndex: '4'
     }
     closeButton = {
         fontSize: '26px',
@@ -40,7 +44,10 @@ export default class Options extends React.Component{
 
     render(){
         return (
-            <div style={this.fondo} >
+            <div>
+                <div style={this.fondo} onClick={ ()=>{this.props.options(); } } >
+                </div>
+
                 <div className="animate__animated animate__fadeInUp" style={this.containerStyle} >
                     <i className="fas fa-times " style={this.closeButton} onClick={ ()=>{this.props.options(); } } ></i>
                     <button style={{height: '10vh', minHeight: '50px'}} className="btn-options" >Dejar de seguir a <span style={{fontWeight: 'bold'}} >"{this.props.user}"</span></button>

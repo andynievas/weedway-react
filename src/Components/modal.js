@@ -4,16 +4,16 @@ import ModalBody from './modalbody';
 export default class Modal extends React.Component{
 
     modalStyle = {
-        backgroundColor: 'rgba(30,30,30,0)',
+        backgroundColor: 'rgba(30,30,30,0.9)',
         backdropFilter: 'blur(6px)',
         color: 'white',
         position: 'fixed',
-        top: '0vh',
-        bottom: '0vh',
-        left: '0px',
-        right: '0px',
+        bottom: '0',
+        left: '0',
+        right: '0',
         width: 'auto',
-        zIndex: '4'
+        height: '100vh',
+        zIndex: '5'
     }
 
     first = 0;
@@ -37,7 +37,7 @@ export default class Modal extends React.Component{
 
         return (
             <div className={ this.animation() }  style={this.modalStyle}>
-                <ModalBody view={this.props.view} setEstado={this.props.setEstado} />
+                <ModalBody estado={this.props.estado} view={this.props.view} setEstado={this.props.setEstado} />
             </div>
         );
 

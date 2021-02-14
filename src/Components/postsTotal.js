@@ -33,12 +33,10 @@ class Interaction extends React.Component {
 
           fetch('https://sample-api-practice-node.herokuapp.com/comentarios')
               .then( e=>{ if(e.status === 200){let data = e.json(); return data } } )
-              .then( comments=>{ this.setState({comments: comments}); /* console.log(this.state);  SpinnerWrapper display none */ } )
+              .then( comments=>{ this.setState({comments: comments}); } )
               .catch( err=>console.log(err) )
 
-      }/*else{
-        console.log("Estoy dentro del ELSE")
-      }*/
+      }
     }
 
     addComment = (user, comentario, id) => {
@@ -98,17 +96,7 @@ class Interaction extends React.Component {
         </div>
       );
     }
-  }
-
-class Dropdown extends React.Component{
-
-    render(){
-      return (
-        <Options user={this.props.user} options={this.props.options} />
-      );
-    }
-  }
-
+}
 
 // Property of Posteo --> posteo={this.props.postData} setEstado={this.props.setEstado}
 
@@ -155,12 +143,6 @@ class Posteo extends React.Component{
 
 }
 
-// function OptionsList(props){
-//   return (
-//     <div onClick={()=>{ props.setEstado(); } } style={{ position: 'fixed', zIndex: '4'}} > Fixed options </div>
-//   );
-// }
-
 export default class PostsTotal extends React.Component{
 
   state = {
@@ -179,7 +161,6 @@ export default class PostsTotal extends React.Component{
   fetchData = ()=>{
     if(JSON.stringify(this.state.users) === '[]'){
 
-        console.log("Estoy dentro del if (fetchData in PostsTotal)");
         fetch('https://sample-api-practice-node.herokuapp.com/usuarios')
             .then( e=>{ if(e.status === 200){let data = e.json(); return data } } )
             .then( users=>{ this.setState({users: users}); } )
@@ -193,13 +174,23 @@ export default class PostsTotal extends React.Component{
   componentDidUpdate = ()=>{ /* Quita el scroll para el body cuando se muestra el menuLateral */
     if(this.state.options){
       document.getElementById('body').style = 'overflow: hidden;';
+      document.getElementById("headerTitleDiv").classList.add("noPointerEvents");
+      document.getElementById("footer").classList.add("noPointerEvents");
     }else{
       document.getElementById('body').style = 'overflow: auto;';
+      document.getElementById("headerTitleDiv").classList.remove("noPointerEvents");
+      document.getElementById("footer").classList.remove("noPointerEvents");
     }
   }
 
   toggleOptions = (user)=>{
     this.userName = user;
+
+    // if( this.state.options ){
+    //   document.getElementById("headerTitleDiv").classList.add("noPointerEvents");
+    // }else{
+    //   document.getElementById("footer").classList.remove("noPointerEvents");
+    // }
 
     this.setState({
       options: !this.state.options
@@ -221,9 +212,9 @@ export default class PostsTotal extends React.Component{
       return (
         <div style={{marginBottom: '80px', marginTop: '80px', position: 'relative', zIndex: '2'}} >
 
-          {this.state.options ? <Dropdown user={this.userName} options={this.toggleOptions} /> : null}
+          {this.state.options ? <Options user={this.userName} options={this.toggleOptions} /> : null}
 
-          {this.state.users.map( user=><Posteo setEstado={this.props.setEstado} options={this.toggleOptions} usuario={user} /> )}
+          {this.state.users.map( user=><Posteo key={user.id} setEstado={this.props.setEstado} options={this.toggleOptions} usuario={user} /> )}
 
         </div>
       );

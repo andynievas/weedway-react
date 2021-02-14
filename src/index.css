@@ -103,6 +103,10 @@ body{
     border-radius: 50%;
   }
 
+.noPointerEvents{
+  pointer-events: none;
+}
+
 /* Div del titulo (y el icono) en HeaderTitle */
 #weedway-title{
   /* background-color: rgb(30,30,30); */
@@ -123,6 +127,7 @@ body{
 #weedway-title img{ /* Este es el icono weedway */
   height: 40px;
 }
+
 
   .allRightsReserved{
     background-color: rgb(30,30,30);
@@ -358,7 +363,7 @@ label.label-input-login{
   z-index: 1;
 }
 input.inputForm[value=""]{
-  border: 2px black solid;
+  border: 2px brown solid;
 }
 input.inputForm{
   background-color: transparent;

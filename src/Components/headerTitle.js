@@ -38,20 +38,20 @@ class HeaderTitle extends React.Component{
     top: '0',
     left: '0',
     right: '0',
-    zIndex: '4'
+    zIndex: '3'
   }
 
   render(){
 
       return (
-          <div className="animate__animated animate__fadeInDown" style={this.headerTitle} >
+          <div className="animate__animated animate__fadeInDown" style={this.headerTitle} id="headerTitleDiv" >
             <div style={{width: '60%', minWidth: '100px'}} id="weedway-title">
               <img className="header-icon" style={ this.iconStyle } src={ imgTitle } alt="«icon»" />
               <h2>WeedWay</h2>
             </div>
 
             <span className=" nav-button" >
-              <button onClick={ ()=>{ this.props.setEstado('Buscar') } } > <i className={'far fa-search navIcon'} > </i> <span style={{fontSize: '16px'}} > Buscar </span> </button>
+              <button onClick={ ()=>{alert("Buscar")} } > <i className={'far fa-search navIcon'} > </i> <span style={{fontSize: '16px'}} > Buscar </span> </button>
             </span>
             <span className=" nav-button" >
               <button onClick={ ()=>{ this.toggleShowMenu(); this.first = 1; } } > <i className={'far fa-user navIcon'} > </i> <span style={{fontSize: '16px'}} > Cuenta </span> </button>

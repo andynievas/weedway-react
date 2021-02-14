@@ -3,19 +3,8 @@ import React from 'react';
 import Mensajes from './mensajes';
 import Foto from './foto';
 import Notifications from './notification';
-import Lugares from './lugares';
+// import Lugares from './lugares';
 
-
-class Buscar extends React.Component{
-
-    render(){
-        return (
-            <div>
-                Busca a tus amigos
-            </div>
-        );
-    }
-}
 
 class ModalBody extends React.Component{
 
@@ -26,13 +15,12 @@ class ModalBody extends React.Component{
         backgroundColor: 'rgba(220,220,220,1)',
         // backdropFilter: 'blur(0px)',
         borderRadius: '20px 20px 0 0',
-        // marginTop: '70px',
         position: 'fixed',
         bottom: '0',
         left: '0',
         right: '0',
-        top: '64px',
-        // height: 'calc(100% - 70px)'
+        top: '10px',
+        zIndex: '5'
     }
 
     buttonStyle = {
@@ -44,11 +32,7 @@ class ModalBody extends React.Component{
     }
 
     view = ()=>{
-        if (this.props.view === 'Buscar'){
-            return (
-                <Buscar />
-            );
-        }else if (this.props.view === 'Foto'){
+        if (this.props.view === 'Foto'){
             return (
                 <Foto />
             );
@@ -60,11 +44,13 @@ class ModalBody extends React.Component{
             return (
                 <Notifications />
             );
-        }else if (this.props.view === 'Lugares'){
+        }
+        /*else if (this.props.view === 'Lugares'){
             return (
                 <Lugares />
             );
-        }else{
+        }
+        else{
             // if (this.props.view === 'User')
             return (
                 <div style={{ backgroundColor: 'green' }} >
@@ -89,6 +75,18 @@ class ModalBody extends React.Component{
                 </div>
                 // <UserProfile nombre del usuario a visitar />
             );
+        }*/
+    }
+
+    componentDidUpdate = ()=>{ /* Quita el scroll para el body cuando se muestra el modal */
+        if(this.props.estado){
+            document.getElementById('body').style = 'overflow: hidden;';
+            document.getElementById("headerTitleDiv").classList.replace("animate__fadeInDown", "animate__fadeOutUp");
+
+            return;
+        }else{
+            document.getElementById('body').style = 'overflow: auto;';
+            document.getElementById("headerTitleDiv").classList.replace( "animate__fadeOutUp", "animate__fadeInDown" );
         }
     }
 
