@@ -44,13 +44,17 @@ class EditarDatos extends React.Component{
             );
         }else {
             return (
-                <div >
-                    <form action="https://sample-api-practice-node.herokuapp.com/comentar" method="POST" className="animate__animated animate__fadeInUp" style={{margin: '20px 0'}} onSubmit={this.onsubmit} id="changeUserName" autoComplete="off" >
-                        <h4>Registrate como nuevo usuario</h4>
-                        <button style={this.edit} onClick={ ()=>{this.props.setEstado(); } } >Cancelar</button>
-                        <input type="text" name="username" onChange={this.onchange} placeholder="Username" />
-                        <input type="submit" value="Guardar" style={{ backgroundColor: 'rgb(20,180,20)', color: 'white', cursor: 'pointer' }} />
-                        <button style={this.logOut} id='logOut' onClick={ (e)=>{ e.preventDefault(); document.getElementById('confirm').classList.add('animate__fadeInUp'); document.getElementById('confirm').classList.remove('none'); } } >Cerrar sesión</button>
+                <div className="animate__animated animate__fadeInUp" style={{margin: '20px 0'}} onSubmit={this.onsubmit} id="changeUserName" >
+
+                    {/* <h4>Registrate como nuevo usuario: <a href="https://sample-api-practice-node.herokuapp.com/" >Aqui</a></h4> */}
+                    <button style={this.edit} onClick={ ()=>{this.props.setEstado(); } } >Cancelar</button>
+                    <button style={this.logOut} id='logOut' onClick={ (e)=>{ e.preventDefault(); document.getElementById('confirm').classList.add('animate__fadeInUp'); document.getElementById('confirm').classList.remove('none'); } } >Cerrar sesión</button>
+
+                    <form action="https://sample-api-practice-node.herokuapp.com/comentar" method="POST"
+                    style={{border: '2px red solid'}} onClick={ (e)=>{ e.preventDefault(); } } >
+                        <h4>Este es el form para crear un nuevo usuario</h4>
+                        <input type="text" name="new-user" onChange={this.onchange} placeholder="Username" />
+                        <input type="submit" value="Submit" style={{ backgroundColor: 'rgb(20,180,20)', color: 'white', cursor: 'pointer' }} />
                     </form>
 
                     <div className="animate__animated none" id="confirm" >

@@ -2,7 +2,8 @@
 import React from 'react';
 
 // Static Files
-import imgTitle from './weedway-icon.png';
+// import imgTitle from './weedway-icon.png';
+import imgTitle from './logo192.png';
 
 class LoginForm extends React.Component{
 
@@ -37,12 +38,12 @@ class LoginForm extends React.Component{
 
         <form onSubmit={this.onsubmit} autoComplete="on" id="formToAuth" >
           <div style={{position: 'relative', margin: '10px 0'}} >
-            <input type='text' className="inputForm" value={this.state.name} onChange={this.onchangeUser} autoComplete="on" id='username-login' />
+            <input type='text' className="inputForm" value={this.state.name} onChange={this.onchangeUser} autoComplete="on" id='username-login' required />
             <label htmlFor="username-login" className="label-input-login" >Usuario</label>
           </div>
 
           <div style={{position: 'relative', margin: '10px 0'}} >
-            <input type='password' className="inputForm" value={this.state.password} onChange={this.onchangePass} id='password-login' />
+            <input type='password' className="inputForm" value={this.state.password} onChange={this.onchangePass} id='password-login' required />
             <label htmlFor="password-login" className="label-input-login" /*"password-label"*/ >Contraseña</label>
           </div>
 
@@ -59,16 +60,17 @@ class LoginForm extends React.Component{
 
 class RegisterForm extends React.Component{
 
+  state = {
+    "new-user": ""
+  }
+
+  onchange = e => {
+    // console.log(e.target.name);
+    this.setState( { [e.target.name]: e.target.value } );
+  }
+
   onsubmit = e => {
-    // e.preventDefault();
-    if( this.state.name !== '' ){
-      localStorage.setItem('weedway-user', this.data.name);
-    }else{
-      e.preventDefault();
-      alert("Usuario vacío")
-      // document.
-    }
-    //e.target[0].value = ''; // e.target[0] es el input correspondiente al post
+    e.preventDefault();
   }
 
   render(){
@@ -76,27 +78,28 @@ class RegisterForm extends React.Component{
       <div className="animate__animated animate__fadeInUp" >
 
         <form
+        action="https://sample-api-practice-node.herokuapp.com/comentar" method="POST"
         onSubmit={this.onsubmit}
         autoComplete="on" id="formToAuth" >
 
           <div style={{position: 'relative', margin: '10px 0'}} >
-            <input type="text" className="inputForm" id="username-register" value="" />
-            <label htmlFor="username-register" className="label-input-login" >Nombre de usuario</label>
+            <input type="text" className="inputForm" name="new-user" id="new-username-register" value={this.state["new-user"]} onChange={this.onchange} required />
+            <label htmlFor="new-username-register" className="label-input-login" >Nombre de usuario</label>
           </div>
 
           <div style={{position: 'relative', margin: '10px 0'}} >
-            <input type="text" className="inputForm" placeholder="Correo" value="" />
-            <label htmlFor="username-register" className="label-input-login" >Nombre de usuario</label>
+            <input type="text" className="inputForm" name="email-register" id="new-email-register" value={this.state["email-register"]} onChange={this.onchange} required />
+            <label htmlFor="new-email-register" className="label-input-login" >Correo</label>
           </div>
 
           <div style={{position: 'relative', margin: '10px 0'}} >
-            <input type="text" className="inputForm" placeholder="Nueva contraseña" value="" />
-            <label htmlFor="username-register" className="label-input-login" >Nombre de usuario</label>
+            <input type="text" className="inputForm" name="nuevaContraseña" id="new-password-register" value="" />
+            <label htmlFor="new-password-register" className="label-input-login" >NuevaContraseña</label>
           </div>
 
           <div style={{position: 'relative', margin: '10px 0'}} >
-            <input type="text" className="inputForm" placeholder="Confirmar contraseña" value="" />
-            <label htmlFor="username-register" className="label-input-login" >Nombre de usuario</label>
+            <input type="text" className="inputForm" name="confirmarContraseña" id="new-confirmPassword-register" value="" />
+            <label htmlFor="new-confirmPassword-register" className="label-input-login" >ConfirmarContraseña</label>
           </div>
 
           <div style={{display: 'flex', margin: '20px'}} >
@@ -144,11 +147,11 @@ export default class Login extends React.Component{
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column',  justifyContent: 'space-between'}} >
           <div style={{ backgroundColor: 'rgb(30,30,30)', display: 'flex', width: '100%', justifyContent: 'center' }} id="weedway-title">
               <img style={ this.icon } src={ imgTitle } alt="«icon»" />
-              <h2 style={{margin: '3px'}} >WeedWay</h2>
+              <h2 style={{margin: '3px'}} >Andy's web</h2>
           </div>
 
           <div style={this.container} >
-            <h3 style={{margin: '10px', textAlign: 'center', fontSize: '34px'}} >Welcome to WeedWay</h3>
+            <h3 style={{margin: '10px', textAlign: 'center', fontSize: '34px'}} >Welcome to Andy's web</h3>
             <p style={{margin: '0 0 10px 0', textAlign: 'center', fontSize: '20px'}} >Tu sitio favorito!</p>
             {this.state.login ? <LoginForm cambiarEstado={this.cambiarEstado} /> : <RegisterForm cambiarEstado={this.cambiarEstado} />}
           </div>

@@ -4,7 +4,8 @@ import React from 'react';
 // Components
 import MenuLateral from './menulateral';
 // Static Files
-import imgTitle from './weedway-icon.png';
+// import imgTitle from './weedway-icon.png';
+import imgTitle from './logo192.png';
 
 
 // weedway-icon.png
@@ -47,7 +48,7 @@ class HeaderTitle extends React.Component{
           <div className="animate__animated animate__fadeInDown" style={this.headerTitle} id="headerTitleDiv" >
             <div style={{width: '60%', minWidth: '100px'}} id="weedway-title">
               <img className="header-icon" style={ this.iconStyle } src={ imgTitle } alt="«icon»" />
-              <h2>WeedWay</h2>
+              <h2>Andy's web</h2>
             </div>
 
             <span className=" nav-button" >

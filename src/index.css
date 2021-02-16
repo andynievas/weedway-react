@@ -120,7 +120,7 @@ body{
   max-width: 400px;
   margin-left: 4px;
   font-family: monospace;
-  font-size: 34px;
+  font-size: 28px;
   text-align: center;
   cursor: pointer;
 }
@@ -355,11 +355,12 @@ body{
 label.label-input-login{
   color: white;
   background-color: tomato;
+  border-radius: 5px;
   padding: 0 10px;
   position: absolute;
   top: -5px;
   left: 30px;
-  transition: all 0.1s;
+  transition: all 0.2s;
   z-index: 1;
 }
 input.inputForm[value=""]{
@@ -372,8 +373,9 @@ input.inputForm{
   margin: 5px 0px;
   padding: 0px 20px;
   width: calc(100% - 44px);
+  font-size: 18px;
   height: 50px;
-  transition: all 0.3s;
+  transition: all 0.2s;
   z-index: 3;
 }
 input.inputForm:focus{
@@ -431,20 +433,22 @@ button#login-btn:hover{
 
 /* Change input autocomplete styles in WebKit *Copiado de internet* */
 input:-webkit-autofill{
-  border: none;
   -webkit-text-fill-color: black;
-  -webkit-box-shadow: 0 0 0px 1000px rgb(255, 251, 139) inset;
+  -webkit-box-shadow: 0 0 50px 0px rgb(255, 246, 123) inset;
+  border: 2px rgb(255, 246, 123) solid;
 }
-input:-webkit-autofill ~ .username-label-focused{
+/* input:-webkit-autofill ~ .label-input-login{
   color: black;
+  background-color: rgb(255, 246, 123);
+} */
+input:-webkit-autofill:focus ~ .label-input-login{
+  color: black;
+  background-color: tomato;
 }
-input:-webkit-autofill:hover{
-  /* -webkit-text-fill-color: black; */
-  -webkit-box-shadow: 0 0 0px 100px rgb(255, 184, 137) inset;
-}
+/* Aqui va el autofill:hover */
 input:-webkit-autofill:focus{
-  /* -webkit-text-fill-color: whitesmoke; */
-  -webkit-box-shadow: 0 0 0px 100px rgb(255, 128, 105) inset !important;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 100px tomato inset !important;
 }
 /* END Change autocomplete styles in WebKit */
 
@@ -459,7 +463,7 @@ input:-webkit-autofill:focus{
 
 @media screen and (max-width: 340px){
   #weedway-title h2{
-    font-size: 26px;
+    font-size: 20px;
   }
   #weedway-title img{
     height: 34px;
